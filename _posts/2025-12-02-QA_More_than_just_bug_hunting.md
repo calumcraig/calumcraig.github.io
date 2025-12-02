@@ -4,7 +4,7 @@ title: "QA - it’s more than just bug hunting and button pushing"
 date: 2025-12-02
 ---
 
-# Let's talk QA
+### Let's talk QA
 
 When the term QA or test is mentioned in the context of developing software a common perception is of the tester just squirrelling away at an application, raising bugs as they encounter them. While, yes, this is part of our jobs, it is only part of the story. Good software testing requires a lot more than bug hunting.
 
