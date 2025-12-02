@@ -4,9 +4,7 @@ title: "Home server project"
 date: 2025-12-02
 ---
 
-#  Home server project
-
-## Planning stage:
+### Planning stage:
 
 - Decide hardware to use: 
   - I had a 4 GB RAM Raspberry Pi 5 which I bought with the intention to set up as a retro gaming console. I do so but wasn't really using much - so I decided to repurpose it as something more practical.
@@ -22,7 +20,7 @@ date: 2025-12-02
   - qBittorrent - my intention was to download directly on the server to avoid copying lots of media from my PC.
   - Glances - monitoring service.
 
-## Initial set up:
+### Initial set up:
 
 - Installing Ubuntu Server on the Pi's SD card was easy - used an application called Raspberry Pi imager. 
   - Can enable SSH + user details during imaging.
@@ -183,14 +181,14 @@ docker compose up -d
 
 - Add SSH keys from PC to server for password less connection.
 
-## Further set up:
+### Further set up:
 
 - Get content into Jellyfin libraries. 
   - Had media on my PC - SCPed files across into the appropriate directories.
   - Longer term strategy is to use the qBittorrent service to download directly to the Pi. Maaaybe, see later.
 - Access the webUIs for the various services to eg set up users, configuration. (Show these on screen.) 
 
-## Issues faced:
+### Issues faced:
 
 - No user could log into Jellyfin!! 
   - Troubleshot this and it turned out to a plugin I'd added. Decided I didn't need it after all so resolved the issue by removing said plugin.
@@ -206,7 +204,7 @@ docker compose up -d
   - I may reconsider this after deciding against running qBittorrent on the server, although its container was much less resource demanding than OO.
   - I did discover though that Nextcloud does offer editing of Markdown documents as default - like Dropbox Paper which I was a big fan of in a previous workplace.
 
-## Future considerations:
+### Future considerations:
 
 - Backup strategy:
   - Haven't fully planned this but intention is to build a second server (also running Ubuntu Server + Docker) to back up important data from the main server. (No intention to backup media, the storage space required would be too much.)
