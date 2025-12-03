@@ -7,7 +7,7 @@ date: 2025-12-02
 ### Planning stage:
 
 - Decide hardware to use: 
-  - I had a 4 GB RAM Raspberry Pi 5 which I bought with the intention to set up as a retro gaming console. I do so but wasn't really using much - so I decided to repurpose it as something more practical.
+  - I had a 4 GB RAM Raspberry Pi 5 which I bought with the intention to set up as a retro gaming console. I did so but wasn't really using much - so I decided to repurpose it as something more practical.
 - Needed storage space so ordered a 1TB SATA drive + mounting board.
 - Decide software to use: 
   - Quick bit of research found an official Raspberry Pi image for Ubuntu Server - I've used Linux for years so that was perfect.
@@ -78,8 +78,6 @@ drwxr-x--- 4 www-data www-data  4096 Sep  4 18:56 nextcloud
 drwxr-xr-x 3 calum    gpio      4096 Sep  4 18:56 postgres
 drwxr-xr-x 7 calum    calum     4096 Sep 14 22:51 qbittorrent
 ```
-
-(Show contents of some directories, esp Jellyfin.)
 
 - Create Docker compose file. I did get help from ChatGPT to do this! Mnt points defined in this file are important.
 
@@ -177,7 +175,7 @@ services:
 
 - Spin up the server!
 
-docker compose up -d
+`docker compose up -d`
 
 - Add SSH keys from PC to server for password less connection.
 
@@ -186,7 +184,7 @@ docker compose up -d
 - Get content into Jellyfin libraries. 
   - Had media on my PC - SCPed files across into the appropriate directories.
   - Longer term strategy is to use the qBittorrent service to download directly to the Pi. Maaaybe, see later.
-- Access the webUIs for the various services to eg set up users, configuration. (Show these on screen.) 
+- Access the webUIs for the various services to eg set up users, configuration. 
 
 ### Issues faced:
 
