@@ -1,13 +1,3 @@
----
-layout: post
-title: "Sleeping Dogs Review"
-date: 2025-12-03
----
-
-### Sleeping Dogs is one of my all time favourite video games.
-
-_This post was originally published on Pure Dead Gaming, a website I have written a few pieces for:_ https://puredeadgaming.com/2022/08/23/classic-games-revisited-reviewed-sleeping-dogs-ps3-ps4/ 
-
 I remember picking up Sleeping Dogs on PS3 for either £1.50 or £2 in CEX around 2016- I had never heard of it and was sceptical that it would be any good at such a low price. But the premise sounded cool af - an open world game based in Hong Kong featuring both the triads and the police.
 
 In the game you play the protagonist Wei Shen - originally a native of Hong Kong who was brought up in the USA and has recently returned to his hometown. In the early stage of the game it seems that he is just another small-time gangster but it is soon revealed that he is in fact an undercover officer in the Hong Kong Police Department. This sets the scene for the main story of the game - Shen gets sucked in deeper and deeper to the HK underworld but still has to maintain his responsibilities as a public servant and police officer. It’s not a particularly original story but it mostly works really well - I have some reservations though which I will get into in due course.
