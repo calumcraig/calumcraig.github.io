@@ -6,7 +6,7 @@ date: 2025-12-03
 
 ### Sleeping Dogs is one of my all time favourite video games
 
-[_This post was originally published on Pure Dead Gaming, a website I have contributed some reviews and articles to:_](https://puredeadgaming.com/2022/08/23/classic-games-revisited-reviewed-sleeping-dogs-ps3-ps4/)
+[_This post was originally published on Pure Dead Gaming, a website I have contributed some reviews and articles to._](https://puredeadgaming.com/2022/08/23/classic-games-revisited-reviewed-sleeping-dogs-ps3-ps4/)
 
 I remember picking up Sleeping Dogs on PS3 for either £1.50 or £2 in CEX around 2016- I had never heard of it and was sceptical that it would be any good at such a low price. But the premise sounded cool af - an open world game based in Hong Kong featuring both the triads and the police.
 
