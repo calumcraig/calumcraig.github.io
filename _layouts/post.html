@@ -26,26 +26,5 @@ layout: default
   <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
 </article>
 
-<form id="comment-form" method="POST"
-      action="https://staticman3.herokuapp.com/v3/entry/github/calumcraig/calumcraig.github.io/master/comments">
-  <input type="hidden" name="options[slug]" value="{{ page.slug | default: page.title | slugify }}">
+<!-- Comments will be inserted here -->
 
-  <p>
-    <label for="name">Name</label><br>
-    <input type="text" id="name" name="fields[name]" required style="width:100%; max-width:400px;">
-  </p>
-
-  <p>
-    <label for="email">Email (not published)</label><br>
-    <input type="email" id="email" name="fields[email]" style="width:100%; max-width:400px;">
-  </p>
-
-  <p>
-    <label for="comment">Comment</label><br>
-    <textarea id="comment" name="fields[comment]" rows="5" style="width:100%; max-width:600px;"></textarea>
-  </p>
-
-  <p>
-    <button type="submit">Submit</button>
-  </p>
-</form>

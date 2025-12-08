@@ -30,9 +30,7 @@ plugins:
 
 comments:
   enabled: true
-  service: staticman
-  endpoint: https://staticman3.herokuapp.com/v3/entry/github/calumcraig/calumcraig.github.io/master/comments
-  branch: master
+  service: 
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
