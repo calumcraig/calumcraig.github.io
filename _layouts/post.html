@@ -17,6 +17,29 @@ layout: default
 
   <div class="post-content e-content" itemprop="articleBody">
     {{ content }}
+
+<div class="share-buttons" style="margin-top:20px; display:flex; gap:10px;">
+  <!-- Twitter -->
+  <a href="https://twitter.com/intent/tweet?text={{ page.title | uri_escape }}&url={{ page.url | absolute_url }}" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;background-color:#1DA1F2;border-radius:50%;color:white;text-decoration:none;">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+      <path d="M23 3a10.9 10.9 0 01-3.14 1.53 ... (full path here) ..."/>
+    </svg>
+  </a>
+  <!-- LinkedIn -->
+  <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url }}" target="_blank" rel="noopener noreferrer" style="...">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+      <path d="M4.98 3.5C3.34 3.5 ... (full path here) ..."/>
+    </svg>
+  </a>
+  <!-- Reddit -->
+  <a href="https://www.reddit.com/submit?url={{ page.url | absolute_url }}&title={{ page.title | uri_escape }}" target="_blank" rel="noopener noreferrer" style="...">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+      <path d="M24 12c0-6.627 ... (full path here) ..."/>
+    </svg>
+  </a>
+</div>
+
+
   </div>
 
   {%- if site.disqus.shortname -%}
