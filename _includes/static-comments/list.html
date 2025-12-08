@@ -1,8 +1,9 @@
 <section id="comments">
   <h2>Comments</h2>
 
-  {% assign comments = site.data.static_comments[page.slug] | sort: "date" %}
+  {% assign comments = site.data.static_comments[page.slug] %}
   {% if comments %}
+    {% assign comments = comments | sort: "date" %}
     <ul>
       {% for c in comments %}
         <li>
@@ -16,3 +17,4 @@
     <p>No comments yet.</p>
   {% endif %}
 </section>
+
