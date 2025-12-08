@@ -11,3 +11,22 @@
 
   <button type="submit">Submit comment</button>
 </form>
+
+<script>
+document.querySelector('.static-comments').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const data = new FormData(form);
+  try {
+    const res = await fetch(form.action, { method: 'POST', body: data });
+    if (res.ok) {
+      form.reset();
+      alert('Comment submitted!');
+    } else {
+      alert('Failed to submit comment');
+    }
+  } catch(err) {
+    alert('Error submitting comment: ' + err);
+  }
+});
+</script>

@@ -28,7 +28,7 @@ theme: minima
 plugins:
   - jekyll-feed
 
-static comments:
+static_comments:
   enabled: true
   endpoint: "https://staticcomments.deno.dev/api/comment"
 
