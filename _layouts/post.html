@@ -18,7 +18,8 @@ layout: default
   <div class="post-content e-content" itemprop="articleBody">
     {{ content }}
 
-<div class="share-buttons" style="margin-top:20px; display:flex; gap:10px;">
+<div class="share-section" style="margin-top:20px; display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+  <span style="font-weight:bold; font-size:0.95rem;">Share this post:</span>
   <!-- Twitter/X -->
   <a href="https://twitter.com/intent/tweet?text={{ page.title | uri_escape }}&url={{ page.url | absolute_url }}" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; background-color:#1DA1F2; border-radius:50%; text-decoration:none;">
     <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/twitter.svg" alt="Twitter" style="width:20px; height:20px; filter: invert(1);">
