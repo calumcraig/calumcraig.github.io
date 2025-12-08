@@ -30,14 +30,22 @@ layout: default
       action="https://staticman3.herokuapp.com/v3/entry/github/calumcraig/calumcraig.github.io/main/comments">
   <input type="hidden" name="options[slug]" value="{{ page.slug | default: page.title | slugify }}">
 
-  <label>Name</label>
-  <input type="text" name="fields[name]" required>
+  <p>
+    <label for="name">Name</label><br>
+    <input type="text" id="name" name="fields[name]" required style="width:100%; max-width:400px;">
+  </p>
 
-  <label>Email (not published)</label>
-  <input type="email" name="fields[email]">
+  <p>
+    <label for="email">Email (not published)</label><br>
+    <input type="email" id="email" name="fields[email]" style="width:100%; max-width:400px;">
+  </p>
 
-  <label>Comment</label>
-  <textarea name="fields[comments]" required></textarea>
+  <p>
+    <label for="comment">Comment</label><br>
+    <textarea id="comment" name="fields[comment]" rows="5" style="width:100%; max-width:600px;"></textarea>
+  </p>
 
-  <button type="submit">Submit</button>
+  <p>
+    <button type="submit">Submit</button>
+  </p>
 </form>
