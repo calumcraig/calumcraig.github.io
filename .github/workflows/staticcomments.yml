@@ -1,0 +1,42 @@
+name: StaticComments
+
+on:
+  workflow_dispatch:
+  repository_dispatch:
+    types: [new_comment]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Extract comment payload
+        id: payload
+        run: |
+          echo '${{ github.event.client_payload.payload }}' > comment.json
+
+      - name: Generate comment file
+        run: |
+          mkdir -p _comments/${{ github.event.client_payload.slug }}
+          timestamp=$(date +%s)
+          filename="_comments/${{ github.event.client_payload.slug }}/comment-${timestamp}.md"
+
+          cat <<EOF > "$filename"
+---
+name: "${{ github.event.client_payload.name }}"
+email: "${{ github.event.client_payload.email }}"
+date: "$(date --iso-8601=seconds)"
+---
+
+${{ github.event.client_payload.comment }}
+EOF
+
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "Add comment for ${{ github.event.client_payload.slug }}"
+          branch: "comment-${{ github.event.client_payload.slug }}-${{ github.run_id }}"
+          title: "Comment on ${{ github.event.client_payload.slug }}"
+          body: "New comment submitted."

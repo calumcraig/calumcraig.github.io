@@ -1,0 +1,13 @@
+<form class="static-comments" method="post" action="{{ site.static_comments.endpoint }}">
+  <input type="hidden" name="options[redirect]" value="{{ page.url }}#comment-submitted">
+
+  <label>Your name
+    <input type="text" name="fields[name]" required>
+  </label>
+
+  <label>Your comment
+    <textarea name="fields[message]" required></textarea>
+  </label>
+
+  <button type="submit">Submit comment</button>
+</form>

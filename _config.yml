@@ -16,7 +16,7 @@
 title: Calum Craig's blog
 email: calumjcraig@protonmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Welcome to Calum's blog! Here I publish posts on a range of mainly tech topics. 
+  Welcome to Calum's blog! Here I publish posts on a range of mainly tech topics.
   I work in the field of software test engineering so that is a big focus but not the only one.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://calumcraig.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
@@ -28,9 +28,9 @@ theme: minima
 plugins:
   - jekyll-feed
 
-comments:
+static comments:
   enabled: true
-  service: 
+  endpoint: "https://staticcomments.deno.dev/api/comment"
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list

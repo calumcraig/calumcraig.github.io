@@ -24,7 +24,16 @@ layout: default
   {%- endif -%}
 
   <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
-</article>
 
 <!-- Comments will be inserted here -->
 
+<div id="comment-status"></div>
+
+<!-- Javascript for comments -->
+<script src="/assets/js/comments.js"></script>
+
+{% include static-comments/list.html %}
+{% include static-comments/form.html %}
+
+
+</article>

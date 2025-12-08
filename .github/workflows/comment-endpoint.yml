@@ -1,0 +1,21 @@
+name: Comment Endpoint
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  relay:
+    runs-on: ubuntu-latest
+    if: startsWith(github.event.issue.title, 'comment:')
+    steps:
+      - name: Parse title
+        run: echo "Payload=${GITHUB_EVENT_PATH}"
+
+      - name: Trigger StaticComments workflow
+        run: |
+          curl -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            https://api.github.com/repos/${{ github.repository }}/dispatches \
+            -d @${GITHUB_EVENT_PATH}

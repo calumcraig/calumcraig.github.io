@@ -1,0 +1,18 @@
+<section id="comments">
+  <h2>Comments</h2>
+
+  {% assign comments = site.data.static_comments[page.slug] | sort: "date" %}
+  {% if comments %}
+    <ul>
+      {% for c in comments %}
+        <li>
+          <strong>{{ c.name }}</strong><br>
+          <small>{{ c.date }}</small><br>
+          {{ c.message | markdownify }}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No comments yet.</p>
+  {% endif %}
+</section>
