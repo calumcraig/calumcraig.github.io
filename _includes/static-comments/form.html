@@ -1,5 +1,8 @@
+<!-- Replacing this code with a hard coded form to fix 405 issue:
 <form class="static-comments" method="post" action="{{ site.static_comments.endpoint }}">
-  <input type="hidden" name="options[redirect]" value="{{ page.url }}#comment-submitted">
+<input type="hidden" name="options[redirect]" value="{{ page.url }}#comment-submitted"> -->
+
+<form class="static-comments" method="post" action="https://staticcomments.deno.dev/api/comment">
 
   <label>Your name
     <input type="text" name="fields[name]" required>
