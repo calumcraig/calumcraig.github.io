@@ -1,4 +1,4 @@
-name: CI/CD Build & Test
+name: CI/CD Build, Test & Deploy
 
 on:
   push:
@@ -9,62 +9,44 @@ on:
       - master
 
 jobs:
-  test:
+  build-test-deploy:
     runs-on: ubuntu-latest
-    outputs:
-      tests-pass: ${{ steps.playwright-test.outcome }}
-
     steps:
       # 1. Checkout repo
       - uses: actions/checkout@v3
 
-      # 2. Set up Node
+      # 2. Set up Ruby for Jekyll
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2
+
+      # 3. Install Jekyll dependencies
+      - run: |
+          gem install bundler
+          bundle install
+
+      # 4. Build Jekyll site
+      - run: bundle exec jekyll build
+
+      # 5. Setup Node.js and Playwright
       - uses: actions/setup-node@v3
         with:
           node-version: 20
 
-      # 3. Install dependencies
       - run: npm install
-
-      # 4. Install Playwright browsers
       - run: npx playwright install --with-deps
 
-      # 5. Run Playwright tests
-      - id: playwright-test
-        run: |
-          npx playwright test --reporter=html
-        continue-on-error: false  # fail the job if tests fail
+      # 6. Serve Jekyll locally
+      - run: |
+          npm install -g serve
+          serve -s _site -l 4000 &
+          sleep 2
 
-      # 6. Upload HTML report
-      - name: Upload HTML report
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: playwright-report
-          path: playwright-report
+      # 7. Run Playwright tests against local build
+      - run: npm run test:local
 
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    needs: test
-    if: needs.test.result == 'success'  # only run if tests passed
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Setup Ruby (for Jekyll)
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 3.2
-
-      - name: Install dependencies
-        run: |
-          gem install bundler
-          bundle install
-
-      - name: Build Jekyll site
-        run: bundle exec jekyll build
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v7
+      # 8. Deploy only if tests pass
+      - uses: peaceiris/actions-gh-pages@v7
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./_site
