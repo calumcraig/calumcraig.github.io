@@ -1,0 +1,70 @@
+name: CI/CD Build & Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    outputs:
+      tests-pass: ${{ steps.playwright-test.outcome }}
+
+    steps:
+      # 1. Checkout repo
+      - uses: actions/checkout@v3
+
+      # 2. Set up Node
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      # 3. Install dependencies
+      - run: npm install
+
+      # 4. Install Playwright browsers
+      - run: npx playwright install --with-deps
+
+      # 5. Run Playwright tests
+      - id: playwright-test
+        run: |
+          npx playwright test --reporter=html
+        continue-on-error: false  # fail the job if tests fail
+
+      # 6. Upload HTML report
+      - name: Upload HTML report
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: playwright-report
+          path: playwright-report
+
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    needs: test
+    if: needs.test.result == 'success'  # only run if tests passed
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Ruby (for Jekyll)
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2
+
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle install
+
+      - name: Build Jekyll site
+        run: bundle exec jekyll build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v7
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
