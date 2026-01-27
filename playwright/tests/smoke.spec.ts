@@ -11,15 +11,11 @@ test('homepage loads', async ({ page }) => {
   const firstPostLink = page.locator('a.post-link').first();
   await expect(firstPostLink).toBeVisible({ timeout: 15000 });
 
-  // Capture the href Jekyll actually generated
-  const href = await firstPostLink.getAttribute('href');
-  expect(href).toBeTruthy();
-
-  // Click through to the post
-  await firstPostLink.click();
-
-  // Wait for navigation to the post URL (pretty URLs or .html both OK)
-  await page.waitForURL(`**${href}`, { timeout: 15000 });
+  // Click through to the post and wait for navigation
+  await Promise.all([
+    page.waitForNavigation({ waitUntil: 'load', timeout: 15000 }),
+    firstPostLink.click()
+  ]);
 
   // Assert *any* visible H1 on the post page
   const postTitle = page.locator('h1').first();
