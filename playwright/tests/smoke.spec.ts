@@ -8,15 +8,18 @@ test('homepage loads', async ({ page }) => {
   await expect(page).toHaveTitle(/Calum Craig/i);
 
   // Wait for posts to appear on homepage
-  await page.waitForSelector('a.post-link', { timeout: 15000 });
+  const firstPostLink = page.locator('a.post-link').first();
+  await firstPostLink.waitFor({ state: 'visible', timeout: 15000 });
 
-  // Check first blog post loads
-  const firstPostLink = page.locator('a.post-link[href="/2026/01/07/AI_in_QA.html"]');
+  // Grab href dynamically and click
+  const href = await firstPostLink.getAttribute('href');
   await firstPostLink.click();
 
-  // Wait for the post content to appear
-  await page.waitForSelector('main h1', { timeout: 15000 });
+  // Wait for the post page main content
+  await page.waitForSelector('main', { timeout: 15000 });
 
-  const postTitle = page.locator('main h1').first();
+  // Ensure the post title exists and is visible
+  const postTitle = page.locator('main h1');
+  await expect(postTitle).toHaveCount(1);
   await expect(postTitle).toBeVisible();
 });
