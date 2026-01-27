@@ -6,6 +6,6 @@ export default defineConfig({
   reporter: 'html',
   use: {
     baseURL: process.env.PLAYWRIGHT_BASE_URL || 'https://calumcraig.github.io',
-    headless: false,
+    headless: true,
   },
 });
