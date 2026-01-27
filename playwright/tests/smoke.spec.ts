@@ -8,7 +8,7 @@ test('homepage loads', async ({ page }) => {
   await expect(page).toHaveTitle(/Calum Craig/i);
 
   // Wait for posts to appear on homepage
-  await page.waitForSelector('article', { timeout: 15000 });
+  await page.waitForSelector('a.post-link', { timeout: 15000 });
 
   // Check first blog post loads
   const firstPostLink = page.locator('a.post-link[href="/2026/01/07/AI_in_QA.html"]');
