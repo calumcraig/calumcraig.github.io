@@ -36,10 +36,12 @@ jobs:
       - run: npm install
       - run: npx playwright install --with-deps
 
-      # 6. Serve Jekyll site locally in background
+      # 6. Serve Jekyll site locally in background and wait until ready
       - run: |
           npm install -g serve wait-on
+          # Start server in background
           serve -s _site -l 4000 &
+          # Wait until the server responds
           npx wait-on http://localhost:4000
 
       # 7. Run Playwright tests against local build
