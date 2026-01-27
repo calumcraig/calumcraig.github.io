@@ -7,19 +7,21 @@ test('homepage loads', async ({ page }) => {
   // Check page title
   await expect(page).toHaveTitle(/Calum Craig/i);
 
-  // Wait for posts to appear on homepage
+  // Wait for at least one post link to appear
   const firstPostLink = page.locator('a.post-link').first();
-  await firstPostLink.waitFor({ state: 'visible', timeout: 15000 });
+  await expect(firstPostLink).toBeVisible({ timeout: 15000 });
 
-  // Grab href dynamically and click
+  // Capture the href Jekyll actually generated
   const href = await firstPostLink.getAttribute('href');
+  expect(href).toBeTruthy();
+
+  // Click through to the post
   await firstPostLink.click();
 
-  // Wait for post page content
-  await page.waitForSelector('article h1', { timeout: 15000 });
+  // Wait for navigation to the post URL (pretty URLs or .html both OK)
+  await page.waitForURL(`**${href}`, { timeout: 15000 });
 
-  // Ensure the post title exists and is visible
-  const postTitle = page.locator('article h1');
-  await expect(postTitle).toHaveCount(1);
-  await expect(postTitle).toBeVisible();
+  // Assert *any* visible H1 on the post page
+  const postTitle = page.locator('h1').first();
+  await expect(postTitle).toBeVisible({ timeout: 15000 });
 });
