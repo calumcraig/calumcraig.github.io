@@ -1,25 +1,7 @@
 {
   "name": "myblog",
   "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/calumcraig/calumcraig.github.io.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/calumcraig/calumcraig.github.io/issues"
-  },
-  "homepage": "https://github.com/calumcraig/calumcraig.github.io#readme",
-  "description": "",
-  "devDependencies": {
-    "@playwright/test": "^1.58.0"
-  }
+  "private": true,
   "scripts": {
     "build": "jekyll build",
     "test": "npx playwright test",
@@ -27,6 +9,6 @@
     "build-and-test": "npm run build && npm run test:local"
   },
   "devDependencies": {
-    "playwright": "^1.37.0"
+    "@playwright/test": "^1.58.0"
   }
 }
