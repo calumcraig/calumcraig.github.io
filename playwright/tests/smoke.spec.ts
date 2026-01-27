@@ -15,8 +15,8 @@ test('homepage loads', async ({ page }) => {
   await firstPostLink.click();
 
   // Wait for the post content to appear
-  await page.waitForSelector('article h1', { timeout: 15000 });
+  await page.waitForSelector('main h1', { timeout: 15000 });
 
-  const postTitle = page.locator('article h1').first();
+  const postTitle = page.locator('main h1').first();
   await expect(postTitle).toBeVisible();
 });
