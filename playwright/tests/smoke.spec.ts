@@ -15,11 +15,11 @@ test('homepage loads', async ({ page }) => {
   const href = await firstPostLink.getAttribute('href');
   await firstPostLink.click();
 
-  // Wait for the post page main content
-  await page.waitForSelector('main', { timeout: 15000 });
+  // Wait for post page content
+  await page.waitForSelector('article h1', { timeout: 15000 });
 
   // Ensure the post title exists and is visible
-  const postTitle = page.locator('main h1');
+  const postTitle = page.locator('article h1');
   await expect(postTitle).toHaveCount(1);
   await expect(postTitle).toBeVisible();
 });
