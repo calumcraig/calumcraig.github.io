@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>QA - it’s more than just bug hunting and button pushing | Calum Craig’s blog</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="QA - it’s more than just bug hunting and button pushing" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Let’s talk QA" />
+<meta property="og:description" content="Let’s talk QA" />
+<link rel="canonical" href="https://calumcraig.github.io//2025/12/02/QA_More_than_just_bug_hunting.html" />
+<meta property="og:url" content="https://calumcraig.github.io//2025/12/02/QA_More_than_just_bug_hunting.html" />
+<meta property="og:site_name" content="Calum Craig’s blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-12-02T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="QA - it’s more than just bug hunting and button pushing" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-12-02T00:00:00+00:00","datePublished":"2025-12-02T00:00:00+00:00","description":"Let’s talk QA","headline":"QA - it’s more than just bug hunting and button pushing","mainEntityOfPage":{"@type":"WebPage","@id":"https://calumcraig.github.io//2025/12/02/QA_More_than_just_bug_hunting.html"},"url":"https://calumcraig.github.io//2025/12/02/QA_More_than_just_bug_hunting.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://calumcraig.github.io//feed.xml" title="Calum Craig&apos;s blog" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Calum Craig&#39;s blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">QA - it’s more than just bug hunting and button pushing</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2025-12-02T00:00:00+00:00" itemprop="datePublished">Dec 2, 2025
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h3 id="lets-talk-qa">Let’s talk QA</h3>
+
+<p>When the term QA or test is mentioned in the context of developing software a common perception is of the tester just squirrelling away at an application, raising bugs as they encounter them. While, yes, this is part of our jobs, it is only part of the story. Good software testing requires a lot more than bug hunting.</p>
+
+<h3 id="the-misconception">The misconception:</h3>
+
+<p>This probably largely stems from the interactions of the QA members with the wider development team. When I ping a developer to chat about something, the “something” is more often than not an issue with their code.</p>
+
+<p>The other preconception is the “button pusher”, just robotically following acceptance criteria and testing by rote. Again, this goes with the territory of testing but again, it does not tell the whole story.</p>
+
+<h3 id="the-real-life-situation">The real life situation</h3>
+
+<p>My first proper job was working for a large UK bank on their business banking on-boarding process - essentially a suite of related web apps, including the customer facing website. This was a few years ago and the bank still very much operated a traditional waterfall development model. We had large releases a few times a year, each containing a lot of functionality.</p>
+
+<p>It was the test team’s responsibility to thoroughly test all the new functions and ensure it all matched what was specified in the Business Requirements Document. While the business analysts were based in the same building, the developers were offshore in India and we had zero interaction with them. Whenever we hit issues we would routinely raise defects in Quality Centre and patiently wait for a fix to come back from the dev team.</p>
+
+<p>After a few years there I moved onto a new company working on a public facing, large volume governmental website. This organisation operated a scrum agile methodology and released far more frequently. As the new functions would reach test more quickly and the changes were far more atomic, detailed in individual Jira tickets rather than one massive requirements document, I found myself raising fewer defects.</p>
+
+<p>As a still relatively new test analyst this bothered me and I shared my feelings with my scrum master. She was delighted!</p>
+
+<p>This threw me off!</p>
+
+<p>We had a long discussion about the responsibilities and input of QA in the development process and she was absolutely correct. Instead of chucking large chunks of broken software at QA and then triaging and fixing a long list of defects, test was getting involved earlier in the process and <em>preventing</em> bugs arising in the first place.</p>
+
+<h3 id="the-wider-impact-of-qa">The wider impact of QA</h3>
+
+<p>Testing tickets and raising bugs is our bread and butter but QA has a much wider impact than that.</p>
+
+<ul>
+  <li>Usability and user journey implications:
+    <ul>
+      <li>Whenever we work with an application or web page etc, we put ourselves in the place of a user. Ultimately our software products will be in the hands of punters - we need to think like them as far as possible. If a journey isn’t broken or a feature is functional, they still might not the best experience for our users. QA feedback can inform improvement of these experiences.</li>
+    </ul>
+  </li>
+  <li>Finding issues early before they become bugs.
+    <ul>
+      <li>The 3 Amigos meeting is a very powerful tool for this purpose. Getting the three disciplines (business, dev, test) early on in the development process can be really valuable. We ascertain the requirements are clear and that we share a common understanding of what we are building - or we clarify any ambiguity.</li>
+      <li>An example of this would be years ago when I joined a 3 Amigos to discuss a new API endpoint we were going to develop. I noticed some inconsistencies in the schema being used which could well have led to defects after the code had been written. We were able to address this before development had properly begun.</li>
+    </ul>
+  </li>
+  <li>Accessibility issues:
+    <ul>
+      <li>Screen reader and other accessibility tools are important to allow access to our software by users with impairments. It is easily overlooked but as testers we can again remind and illustrate to the business its importance. As non genuine users it can be challenging to put ourselves in the place of e.g. a user with little vision but it is an important part of testing not routinely covered in functional tickets themselves.</li>
+    </ul>
+  </li>
+  <li>Security focus:
+    <ul>
+      <li>Penetration testing is of course an entire (specialised) discipline in its own right but we can 100% test with a secure mindset. Weak validation, vague error messages, poor session handling are all security related aspects we can be vigilant for.</li>
+    </ul>
+  </li>
+  <li>Process improvement:
+    <ul>
+      <li>Typically QA will have a large input on the lifecycle of defects. Of the bigger, overall software development lifecycle perhaps not so much but we still have some influence. CI pipelines can be improved by increasing test automation coverage, fixing or removing flaky tests. Even the release process (which varies wildly by organisation) can often be tweaked for the better.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="quality-ownership-across-the-lifecycle">Quality ownership across the lifecycle</h3>
+
+<ul>
+  <li>Requirements analysis:
+    <ul>
+      <li>We frequently work closely with business analysts to ensure requirements for new features are accurate, meaningful and comprehensive. The acceptance criteria are our starting point when we come to design test cases after all.</li>
+    </ul>
+  </li>
+  <li>Test planning and strategy:
+    <ul>
+      <li>This can vary depending on the nature of the organisation but a couple of examples of this are my current company - again a bank. As an audited organisation we need a paper trail of controls and test plans are an important part of that. In a previous company, QA and the major stakeholders worked together to establish an agreed upon defect life cycle.</li>
+    </ul>
+  </li>
+  <li>Automation and CI/CD integration:
+    <ul>
+      <li>Automation has been a buzz word for years and companies frequently view it is a sliver bullet to cure all their quality woes. I don’t subscribe to this notion but that’s probably a topic for another blog post. Nevertheless, test automation is an important role. As we don’t usually have the same level of coding expertise as actual developers, this is usually another responsibility shouldered by both dev and test.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="the-bigger-picture-of-quality">The Bigger Picture of Quality</h2>
+
+<p>To go back to my previous experience of moving from waterfall to agile: I initially found the relative lower volume of defects I and other testers were raising a little concerning. But, it formed a turning point when I started to grasp the wider context of quality assurance in the software development process. The term <em>shift left</em> is often used to describe this concept in action and it is a good way to think about it.</p>
+
+<p>The left hand side of a project board shows work yet to be done. Analysts will need to write the initial tickets to get them on the board but QA can absolutely interrogate work before it any code has been written for inconsistencies, ambiguity, indeed even outright errors and we will naturally see fewer defects encountered.</p>
+
+<p>This early involvement of the QA team <em>bakes in</em> quality from the very start and along with all the other influences QA has on the development cycle, it is clear that QA has a very important role in building high quality software. And running test execution and raising bugs!</p>
+
+
+<div class="share-section" style="margin-top:20px; display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+  <span style="font-weight:bold; font-size:0.95rem;">Share this post:</span>
+  <!-- Twitter/X -->
+  <a href="https://twitter.com/intent/tweet?text=QA%20-%20it%E2%80%99s%20more%20than%20just%20bug%20hunting%20and%20button%20pushing&url=https://calumcraig.github.io//2025/12/02/QA_More_than_just_bug_hunting.html" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; background-color:#1DA1F2; border-radius:50%; text-decoration:none;">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/twitter.svg" alt="Twitter" style="width:20px; height:20px; filter: invert(1);">
+  </a>
+
+  <!-- LinkedIn -->
+  <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://calumcraig.github.io//2025/12/02/QA_More_than_just_bug_hunting.html" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; background-color:#0077B5; border-radius:50%; text-decoration:none;">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn" style="width:20px; height:20px; filter: invert(1);">
+  </a>
+
+  <!-- Reddit -->
+  <a href="https://www.reddit.com/submit?url=https://calumcraig.github.io//2025/12/02/QA_More_than_just_bug_hunting.html&title=QA%20-%20it%E2%80%99s%20more%20than%20just%20bug%20hunting%20and%20button%20pushing" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; background-color:#FF4500; border-radius:50%; text-decoration:none;">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/reddit.svg" alt="Reddit" style="width:20px; height:20px; filter: invert(1);">
+  </a>
+</div>
+
+  </div><a class="u-url" href="/2025/12/02/QA_More_than_just_bug_hunting.html" hidden></a>
+
+<!-- Comments will be inserted here -->
+
+<div id="comment-status"></div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Calum Craig&#39;s blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Calum Craig&#39;s blog</li><li><a class="u-email" href="mailto:calumjcraig@protonmail.com">calumjcraig@protonmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/calumcraig"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">calumcraig</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Welcome to Calum&#39;s blog! Here I publish posts on a range of mainly tech topics. I work in the field of software test engineering so that is a big focus but not the only one.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

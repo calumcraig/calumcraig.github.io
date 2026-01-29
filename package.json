@@ -1,0 +1,14 @@
+{
+  "name": "myblog",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "jekyll build",
+    "test": "npx playwright test",
+    "test:local": "PLAYWRIGHT_BASE_URL=http://localhost:4000 npx playwright test",
+    "build-and-test": "npm run build && npm run test:local"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.58.0"
+  }
+}

@@ -1,0 +1,612 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://calumcraig.github.io//feed.xml" rel="self" type="application/atom+xml" /><link href="https://calumcraig.github.io//" rel="alternate" type="text/html" /><updated>2026-01-29T21:46:26+00:00</updated><id>https://calumcraig.github.io//feed.xml</id><title type="html">Calum Craig’s blog</title><subtitle>Welcome to Calum&apos;s blog! Here I publish posts on a range of mainly tech topics. I work in the field of software test engineering so that is a big focus but not the only one.</subtitle><entry><title type="html">AI - what role does it have to play in QA?</title><link href="https://calumcraig.github.io//2026/01/07/AI_in_QA.html" rel="alternate" type="text/html" title="AI - what role does it have to play in QA?" /><published>2026-01-07T00:00:00+00:00</published><updated>2026-01-07T00:00:00+00:00</updated><id>https://calumcraig.github.io//2026/01/07/AI_in_QA</id><content type="html" xml:base="https://calumcraig.github.io//2026/01/07/AI_in_QA.html"><![CDATA[<p>Today I want to talk about the biggest current development out there - AI. We’ve all heard the “all your jobs will be lost to AI” scaremongering and maybe we should be a little concerned. But, from my point of view, that concern is better placed in not being left behind at being able to use this wonderful new set of tools we have rather then Skynet stealing your job.</p>
+
+<h3 id="where-can-we-leverage-this-emerging-technology">Where can we leverage this emerging technology?</h3>
+
+<p>Since ChatGPT blazed onto the scene in late 2022 people have been asking it many, many different sorts of questions and tasking it with absurd challenges such as designing a tiny language for ants and creating a murder mystery plot that takes place entirely in a fridge (I asked it for these examples!).</p>
+
+<p>It didn’t take long for these requests to spread into people’s work lives and for AI to start supporting job workflows. Last year was the first year I actively started to look for places I could use AI in my role as a test engineer, to improve efficiencies and be more responsive to changes and challenges in my work place.</p>
+
+<p>In today’s blog I am going to talk about a few examples where I have absolutely found AI support to be beneficial to me and discuss other situations where I can see the potential of it to help me.</p>
+
+<p>Context: I currently work in a Microsoft ecosystem so the enterprise AI tool available to me is MS Copilot. ChatGPT is blocked on my corporate network but is my favoured AI tool in my personal time. I have also used Lumo from Proton as it respects privacy better but I have found its results not as strong as ChatGPT.</p>
+
+<p>Further context: as I state on the <a href="https://calumcraig.github.io/about/">About</a> page of this blog, I do <em>not</em> agree with the use of generative AI to create content for me. Every word on this page has been written by a human (me). One of my greatest fears with AI is people delegating their thinking to a machine. We have already seen the decline of reading in the population and its associated negative impact upon language skills (I once worked with a younger man who was apparently proud to declare he had never read a book other than those he had to for school. I frequently used vocabulary he clearly didn’t understand. These two facts are not unrelated…) - I worry about the impact of AI upon people’s writing skills.</p>
+
+<p>I actually quite like the name MS use - Copilot. That is the correct image in my opinion - AI as an assistant, helping you out, fetching info, crunching numbers, doing monotonous tasks etc.</p>
+
+<h3 id="some-concrete-examples">Some concrete examples</h3>
+
+<p>In no particular order I will talk about some real life scenarios where I have found AI to be of great use.</p>
+
+<ul>
+  <li>Interrogating and parsing logs:
+    <ul>
+      <li>I had to test an API upgrade a few months back for a mobile banking app. The upgrade made no visible changes to the functionality of the app but it did introduce a few subtle differences in back end behaviour. The challenge I had was that these were buried in amongst huge logs of very detailed but largely irrelevant information.</li>
+      <li>I obtained the logs before the API upgrade was deployed and again after - for the same operations in the mobile app. I then explained the context to Copilot and asked it to compare the two log files and present to me its findings together with the rationale for its conclusion.
+        <ul>
+          <li>I *could have done similar with a side by side comparison tool and judicious use of CTRL + F but Copilot did it far quicker and presented the results in a nice, easily readable and understandable fashion.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Interpreting CLI errors:
+    <ul>
+      <li>I’m an old Linux man and the one saving grace of having to use a Mac for work is that it too has a Command Line Interface (CLI) or terminal. Given the option I will always prefer to work in the terminal than a GUI. A while back I was setting up automated regression tests to run locally on my Mac so used a Maven terminal command to kick things off. I was getting a lot of build errors initially but I wasn’t sure what the cause was.</li>
+      <li>I again explained succinctly to Copilot what I was attempting to do and copied in chunks of the terminal output containing the errors.</li>
+      <li>It quickly identified potential issues and suggested possible fixes. We didn’t get everything working immediately but we did after some work.
+        <ul>
+          <li>Again, I *could have done the above by Googling error messages and trawling Stack Overflow etc but using AI helped me reach the solution much quicker and easier. Or, we could say, more efficiently. Spotting a pattern yet?</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Creating test cases:
+    <ul>
+      <li>I have mentioned my caution towards using generative AI to actually create content and this one is veering close to that but with a major caveat - I’ve asked AI for suggestions for scenarios and then used my human judgement to choose and *actually create the test cases.</li>
+      <li>In my experience so far, AI creates far more test scenarios than is necessary. Thus it makes it a good tool to start with then filter out inappropriate (and potentially impossible) test cases. For example a recent suggested test case was to test in dark mode - all very well except our app currently doesn’t support dark mode!</li>
+      <li>Copilot produces broad bullet points which I translate into actual test scripts, either manual or automated. I could ask it to do all the work but as I’ve talked about for me that is a step too far. I would have to check all its working anyway so I wouldn’t save *that much time.</li>
+      <li>As ever, I clearly outlined the context of my request then fed Copilot the acceptance criteria from the original ticket. I asked it to put its test case scenarios into an Excel spreadsheet and then manually created the test case scripts in qTest.
+        <ul>
+          <li>Obviously this could be done by a human being - I’m an experienced test engineer, I am a subject matter expert, I <em>know</em> what I need to test. Once again leveraging an AI tool just makes this process a lot more efficient.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Test data generation:
+    <ul>
+      <li>This is one I have had mixed results with but there is definitely potential there depending on your system under test. The majority of the data I need to test my banking apps needs to be created by hand using bespoke (and frequently legacy) banking back end apps. I have yet to find a way to utilise AI for this sort of task.</li>
+      <li>Non banking specific data though is ideal for tasking AI to create. Mock addresses, fake National Insurance numbers, names, dates etc etc are all bread and butter stuff for Copilot or ChatGPT.
+        <ul>
+          <li>Yet again, of course this is possible using traditional web tools but using AI is the smarter way to approach such mundane tasks.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Sounding board:
+    <ul>
+      <li>Of course this particular use case is not unique to testing. AI is widely used to “bounce ideas off” and I find this pretty useful when thinking about upcoming tasks. With this though we do need to be extremely aware of AI’s desire to please its user. On many occasions I have had AI take me down a dead end, trying to make something work which just won’t because it doesn’t want to say no to me. As long as we bear this mind, along with its nasty habit of hallucinating, chatting to an AI bot to get inspiration can definitely be a rewarding experience.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="possible-future-uses">Possible future uses</h3>
+
+<p>I have some more ideas about other situations AI could be a time / effort saver for me - again in no specific order.</p>
+
+<ul>
+  <li>Exploratory testing support:
+    <ul>
+      <li>I’ve talked about the value of <a href="https://calumcraig.github.io/2025/12/05/Exploratory_testing_in_agile.html">exploratory testing</a> already in this blog and I don’t think it can be overstated. I’ve been working on the same mobile apps for over three years now so it perhaps isn’t of such value to me in my current role but if for example I changed job and started working on applications I wasn’t familiar with this could really help.</li>
+      <li>Idea generation - ask AI for suggested customer journeys, possible edge case scenarios, input field validations to help guide exploratory tests.</li>
+      <li>Simulating user behaviour. We can ask an AI tool to simulate likely journeys through an app, given particular user personas (which we could in turn use AI to create).</li>
+    </ul>
+  </li>
+  <li>Assistance with risk assessment and test prioritisation:
+    <ul>
+      <li>I asked Lumo to suggest possible ways in which it could support me in my job and this was one of the ideas it returned. It intrigued me somewhat. I’m not sure how much data it would need but Lumo claimed by feeding it info such as defect trends and requirements it could predict the likelihood of a range of test suites failing or not and the potential business impact.</li>
+    </ul>
+  </li>
+  <li>Accessibility:
+    <ul>
+      <li>This is an area which my current organisation (like many others) doesn’t pay enough attention to. However, we are aware of this and are making improvements. AI could support us here too.
+        <ul>
+          <li>Measuring colour contrast. If we paste images of screens into Copilot and ask it to measure the contrast ratio between text and its background to confirm how accessible the palette choice is.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="points-to-remember">Points to remember</h3>
+
+<ul>
+  <li>Context:
+    <ul>
+      <li>One thing which has consistently come up for me when working with an AI tool is providing context. This really helps the bot understand what exactly you want from it.  For example:</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>I need to test an API upgrade for an Android mobile banking app.
+I will provide you with the acceptance criteria from the original Jira ticket.
+Create a list of potential test cases and put these into a spreadsheet for me to download.
+</code></pre></div></div>
+
+<p>etc.</p>
+
+<p>(This example may be slightly misleading as I have broken the instructions down into somewhat short and simple sentences. In my experience AI is just as capable of understanding longer, more complex language too.)</p>
+
+<ul>
+  <li>Repeatability:
+    <ul>
+      <li>I have found that instructions such as <code class="language-plaintext highlighter-rouge">Do the same operation again with this new data.</code> often gave inconsistent results. I’ve had better results writing an initial (set of) prompt(s), supplying the data in question then restarting with the exact same prompt(s) with the new set of data.</li>
+    </ul>
+  </li>
+  <li>Hallucinations!
+    <ul>
+      <li>Always be aware that (at this moment in time), AI has a terrible habit of making stuff up! If you are at all sceptical of what it is telling, trust your instinct and ask it to “show its working”.  I’ve been extremely doubtful of AI ever since ChatGPT told me, quite confidently, that Frank Sauzee was a legendary Dundee Utd player! (He never played for the club…)</li>
+      <li>One strategy I’ve had some success with is to use more than one tool. Eg, I’ve had Copilot tell me something I didn’t fully trust so I fed its output into ChatGPT and asked it to verify. Of course you can do it the old fashioned way and Google things too!</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>AI seems like it’s everywhere these days (yes Microsoft I’m looking at you) and I would question the need for an AI button in the likes of WhatsApp but it would be remiss to dismiss it as a passing fad. It absolutely can bring value to our work as software testing professionals but we should always exercise caution and remember our brains are the most important tools we have.</p>
+
+<p>AI should be an enhancement, another tool in our arsenal but it should not replace our own critical thinking capacity. At this moment in time it is very fallible: it makes things up and can provide misleading or inaccurate analyses.</p>
+
+<p>However, as long as always remind ourselves of its weaknesses and exercise quality control of its output, it can be a very useful tool. I’ve talked about some real examples from my working life and some areas where I could see it also working. That is 100% the tip of the iceberg though! The AI scene is moving extremely quickly, who knows what uses we will find for it in a year or two?</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Today I want to talk about the biggest current development out there - AI. We’ve all heard the “all your jobs will be lost to AI” scaremongering and maybe we should be a little concerned. But, from my point of view, that concern is better placed in not being left behind at being able to use this wonderful new set of tools we have rather then Skynet stealing your job.]]></summary></entry><entry><title type="html">Exploratory tesing in agile</title><link href="https://calumcraig.github.io//2025/12/05/Exploratory_testing_in_agile.html" rel="alternate" type="text/html" title="Exploratory tesing in agile" /><published>2025-12-05T00:00:00+00:00</published><updated>2025-12-05T00:00:00+00:00</updated><id>https://calumcraig.github.io//2025/12/05/Exploratory_testing_in_agile</id><content type="html" xml:base="https://calumcraig.github.io//2025/12/05/Exploratory_testing_in_agile.html"><![CDATA[<h3 id="why-exploratory-testing-is-important-in-an-agile-framework">Why exploratory testing is important in an agile framework</h3>
+
+<p>When we deliver software using an agile methodology such as Scrum, we typically develop (and of course test) functionality in small, discrete packages.</p>
+
+<p>When a ticket is being worked upon QA will take the acceptance criteria as the starting point for designing our test cases which we then usually write scripts for in a test tool - either to be executed manually or automated. (As an aside I’ve recently been experimenting with using AI to help write test cases. I hate to admit it but I’ve been pleasantly surprised by the results. Give it a go if you haven’t yet.)</p>
+
+<p>We’ll then execute the test scripts and, assuming no defects are discovered, move the ticket on to the next stage of the board (generally PO acceptance but can vary depending on flavour of agile / organisation etc).</p>
+
+<p>That’s all well and good but it doesn’t quite feel satisfactory to me - which is where exploratory testing comes in.</p>
+
+<h3 id="what-is-exploratory-testing">What is exploratory testing?</h3>
+
+<p>Simply put, unscripted tests. While a well designed and written suite of test cases will cover the functionality being developed it generally isn’t the full story. It is usually very valuable to supplement this with exploratory testing. This is where QA goes “off piste” and tries to think outside of the box with the ways we interact with the system under test. We will explore unpredictable user behaviour, provoke extreme edge cases and generally try to break things.</p>
+
+<p>When I say exploratory testing is largely unscripted that’s not to say there are no techniques / strategies we can employ whilst engaged in this test approach:</p>
+
+<ul>
+  <li>Session based testing. We time box a session, set out some general goals (such as thoroughly test the login journey of a mobile banking app) and explore.</li>
+  <li>Mind mapping. Mind maps are effective tools for visualising journeys through a system. This is particularly useful for complex systems where e.g. there may be a number of interconnected APIs.</li>
+  <li>Risk based testing. One of the basic principles of testing is that comprehensive testing, where test <em>everything</em> is simply not possible. There is only a finite amount of time and effort available to us. As such we can choose to target areas of the system under test which pose the largest risk. This may be at our discretion or a business lead decision.</li>
+  <li>Pair or mob testing. Like pair or mob developing this is when we work with other testers in the spirit of “two heads are better than one” in terms of generating test ideas and having different perspectives on the matter at hand.</li>
+  <li>Subject matter expertise. When we work on a piece of software and grow to be knowledgeable about it, this is a boon to exploratory testing.  To go back to the example of the login journey, I may have previously tested this journey and from this experience I know that the password reset journey is potentially vulnerable to inadvertent defects and know to thoroughly test this area, even if the changes being tested lie somewhere slightly different.</li>
+  <li>A/ B testing. Comparing behaviours across environments / OSes / builds / versions can be extremely informative. In my current role I work on both mobile apps (Android and iOS). When testing a new feature I will often compare the two OSes. In addition, we have to support older versions of both OS so we can’t just test on the latest version.</li>
+</ul>
+
+<p>To give a real world example of a defect discovered by exploratory testing that scripted, formal testing wouldn’t have picked up on, we recently discovered an issue caused by race conditions in our mobile app. If a user repeatedly, quickly spammed a button in the app which triggered an API call, the sequence of calls could be corrupted and a 404 error was thrown. This 100% falls into the “extreme edge case” category but we knew from user reviews of the app that it had happened in production.</p>
+
+<h3 id="tools-to-support-exploratory-testing">Tools to support exploratory testing</h3>
+
+<p>For most testers exploratory testing will not be a major departure from their normal workflow so the tools they usually employ will most likely suffice. A few things to consider though might be:</p>
+
+<ul>
+  <li>A lightweight note taking app. I usually use a plain text editor or something that supports Markdown. On Linux I use Typora and on my work Mac I use the OS included TextEdit app. A nice simple note taking tool is absolutely fine, we don’t need to go down the formatting rabbit hole of a Word document.</li>
+  <li>Screen recording and screenshot tools. Again I use the built in Screenshot app in MacOS - or sometimes QuickTime which has the added benefit of integrating with Xcode.</li>
+  <li>Bug reporting: again this will most likely be the same tool you use in your normal testing. The key difference for me is that for defects found outwith formal testing I raise them directly in Jira, whereas when executing scripted tests I initially raise them in the test tool qTest which is itself integrated with Jira and a corresponding Jira ticket is created by the tool.</li>
+  <li>An inspector / recorder tool. What I mean here is we may discover flows while exploratory testing that we want to automate to return to later. Various tools exist that can do this - in my current role as a mobile app tester I have used Appium Inspector and Maestro Studio for this purpose.</li>
+</ul>
+
+<h3 id="benefits-of-exploratory-testing">Benefits of exploratory testing</h3>
+
+<ul>
+  <li>Early testing, quick feedback. We can test a new feature as soon as it is developed without needing to script and execute formal test cases. “Kick the tyres” of the system under test. Unscripted interaction with the product often exposes high-impact issues earlier than structured test cycles.</li>
+  <li>Better placed to uncover edge cases. Of course a well designed test suite will include edge cases and negative scenarios but further exploratory testing can really delve into this aspect of the system. This can tie into our knowledge and expertise of the system.</li>
+  <li>Enhanced collaboration and knowledge transfer. Working together on exploratory testing is the ideal opportunity for e.g. an experienced tester to share with a new starter: quirks of the system they are working on etc.</li>
+  <li>Increases productivity in downtime. When development of tickets take longer than anticipated it can result in a delay in work reaching Ready for Test. When this happens the QA team can engage in exploratory testing so that value is still added to the process even when e.g. waiting for build issues to be resolved.</li>
+</ul>
+
+<h3 id="its-not-either-or">It’s not either or</h3>
+
+<p>Exploratory testing absolutely shouldn’t replace scripted formal testing but it is the perfect complement to it. Well designed test case, when accurately executed <em>will</em> uncover defects but we know that it can and does miss some. That’s where exploratory testing comes in to support our testing process.</p>
+
+<p>Situations such as race conditions, extreme edge cases and cross OS discrepancies may well be covered by regular testing <em>to an extent</em> but exploratory testing affords us the opportunity to get stuck in even deeper.</p>
+
+<p>I’m sure your team does engage in exploratory testing to some extent but I would absolutely encourage you to ensure it features as a regular component of your testing approach in an agile methodology.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Why exploratory testing is important in an agile framework]]></summary></entry><entry><title type="html">Sleeping Dogs Review</title><link href="https://calumcraig.github.io//2025/12/03/Sleeping_Dogs_Review.html" rel="alternate" type="text/html" title="Sleeping Dogs Review" /><published>2025-12-03T00:00:00+00:00</published><updated>2025-12-03T00:00:00+00:00</updated><id>https://calumcraig.github.io//2025/12/03/Sleeping_Dogs_Review</id><content type="html" xml:base="https://calumcraig.github.io//2025/12/03/Sleeping_Dogs_Review.html"><![CDATA[<h3 id="sleeping-dogs-is-one-of-my-all-time-favourite-video-games">Sleeping Dogs is one of my all time favourite video games</h3>
+
+<p><a href="https://puredeadgaming.com/2022/08/23/classic-games-revisited-reviewed-sleeping-dogs-ps3-ps4/"><em>This post was originally published on Pure Dead Gaming, a website I have contributed some reviews and articles to.</em></a></p>
+
+<p>I remember picking up Sleeping Dogs on PS3 for either £1.50 or £2 in CEX around 2016- I had never heard of it and was sceptical that it would be any good at such a low price. But the premise sounded cool af - an open world game based in Hong Kong featuring both the triads and the police.</p>
+
+<p>In the game you play the protagonist Wei Shen - originally a native of Hong Kong who was brought up in the USA and has recently returned to his hometown. In the early stage of the game it seems that he is just another small-time gangster but it is soon revealed that he is in fact an undercover officer in the Hong Kong Police Department. This sets the scene for the main story of the game - Shen gets sucked in deeper and deeper to the HK underworld but still has to maintain his responsibilities as a public servant and police officer. It’s not a particularly original story but it mostly works really well - I have some reservations though which I will get into in due course.</p>
+
+<p>The first time I played Sleeping Dogs I put two or three hours in but it didn’t click with me for whatever reason. I always thought it would be a good one to come back to so when I saw it on sale on PSN a year or so ago I put it in my library. Now, in 2022 I have finally gone back and fully committed to it and the TLDR is that I absolutely love the game!</p>
+
+<p>That’s not to say it doesn’t have its flaws - it does, just like any other game. In this review I will talk about the strong parts of the game, discuss some areas that I think are not so well done and finally I will break down in tears at the realisation that the game will (unless someone acquires the IP) never get the sequel that could have raised it to masterpiece level! United Front Games, the Vancouver based studio that developed the game, closed for business in 2016…</p>
+
+<p>The open world of Hong Kong is brilliantly implemented - big enough so that if the player desires they can spend time doing side missions / collectibles instead of the mainline story but, crucially, never so big that it is overwhelming or intimidating. (I came into my play of Sleeping Dogs straight off the back of completing AC Origins - a game which I eventually came to truly love but did suffer quite a lot of “open world fatigue” in the middle, around 25 - 35 hours. I was dubious about playing another open world game straight away but Sleeping Dogs turned out to be the perfect fit.)</p>
+
+<p>Progression through the game is extremely well paced and structured. For example, you don’t get a hint of gunplay until you are approaching the end of the main story for the first (of four) areas on the map: the game makes sure your hand to hand combat skills are well honed before letting you near a gun. The climatic mission for this first area subsequently utilises gunplay and further introduces the mechanic of action highjacking. After this mission you then start to encounter side quests which employ said highjacking. It builds layers of gameplay upon what is learned and experienced earlier in the game - nothing revolutionary but really well executed.</p>
+
+<p>Hand to hand combat is very well done, using a straightforward control system which allows you to take on groups of bad guys in a very smooth, fluid fashion. It is apparently similar to that in the Arkham Batman games but, as I haven’t played those, I can’t comment. It took me a bit of time and practice and at the time of writing I do still struggle a bit with fights against larger groups of bad guys, but I have definitely made a lot of progress.</p>
+
+<p>In a recurring theme, I found the skill trees made genuine differences without being over convoluted. There are three types of upgrade - cop,triad and melee, each of which has only two branches. Enough to make you think about what you are going to spend upgrade points on but still simple enough to keep things ticking over at a nice pace.</p>
+
+<p>The blend of main versus side missions is balanced perfectly in my opinion. There are never any more than a handful of available missions - you can seek out side quests like favours and cop jobs - but your progression through the story is really well paced.</p>
+
+<p>To sum up, “big enough but not too big, enough side missions and collectibles in it without being overwhelming” is some of the strongest praise I can give an open world action game.</p>
+
+<p>Like I said, it’s not all perfect - I am nitpicking to a certain extent but even though I mostly played the PS4 Definitive Edition remaster, the game’s roots as a PS3 generation title can be seen through e.g. the blurring of the background into distance and the character models. As a late stage PS3 title it looked great on that machine but it is showing its age these days. We’re not getting a sequel (sob sob) but a “ground up” remake would be most welcome.</p>
+
+<p>***Update: Since I wrote this original review I have replayed the game on PC. My comments about it looking its age definitely apply less on that platform. I have a decently powerful gaming PC so I was able to crank up all graphical settings and still have it run at well over 100fps. On PC I would rephrase this to: “Obviously an older game but looks great for its age.” The platform to play these days is definitely PC unless by some miracle it gets a PS5 60fps patch but even then it won’t be as good as the performance I have.</p>
+
+<p>One thing I get annoyed with in games and films alike is people always speaking English - it really breaks immersion to hear, e.g. characters in the Yakuza series speak English. Subs over dubs is a hill I will die on everytime. So, the language in Sleeping Dogs is one of my frustrations. The majority of the speech in the game is in (frequently American accented) English. This can be explained away for the main character Wei Shen by the fact that he has returned to Hong Kong from growing up in the USA. I’ve never been to Hong Kong so I have no direct experience but I really struggle to believe that the denizens of the island city state punt their pork bowls, fish balls, noodles etc in English to their fellow citizens.</p>
+
+<p>There are the odd Cantonese words / phrases interspersed throughout but I actually found this negated one potential positive of the extensive use of English - not needing to read subtitles. I kind of found this to be the worst of both worlds - extensive English breaks the immersion but there are still bits I need to check in the subtitles so I have to follow those <em>as well</em>.</p>
+
+<p>Having said all that, the use of English does allow for some moments of comedy - running through the night market in North Point and you can hear the merchants selling their wares with phrases like “all Hollywood movies, very cheap” and “my duck gives you healing powers”!</p>
+
+<p>Driving in Sleeping Dogs can be unsatisfying. I’m not the biggest fan of driving games but I don’t generally mind it being integrated into more varied games. It’s mostly done reasonably well here but it can get slightly annoying at times - it is <em>really</em> easy to clip the corner of a building or a wall etc when you are barrelling down a street at top speed and grind to a halt, watching as your quarry pulls away from you. I personally didn’t have any inclination to do any of the street races the game offers as side missions and merely did what I needed to do to advance the main storyline.</p>
+
+<p>There is a kind of fast travel where you can hail a taxi and then get taken to a selection of (but not all) locations on the map. Lack of taxis available can be frustrating though and lead to some aimless running around “looking for a vehicle” gametime.</p>
+
+<p>The in car music isn’t great, I didn’t really get the “just drive around and listen to tunes” vibe you get with some open world games. There was a mix of (presumably) authentic Cantonese tunes with some hip hop (the odd tune of which I recognised) but overall the audio experience is one of the weaker parts of the game in my opinion.</p>
+
+<p>My ability to actually play games at times doesn’t match my enthusiasm to do so. This, coupled with a lack of patience when it comes to dying multiple times, boss fights and so on, means it is not unusual for me to resort to “accessibility” options to get to the end of a game. There is no option to change difficulty in Sleeping Dogs so I did wonder if there might be missions that would prove too challenging for me. So far though I have been pleasantly surprised to find that the difficulty curve is pretty much spot on. Sure, I have died a fair bit and fucked up missions and had to start over but I’ve always felt like I was progressing - “Right I got six of those eight gangsters this time, one more push to wipe them all out and complete the drugs bust.”.</p>
+
+<p>The writing in the game is frequently brilliant. There’s a side mission plot where Shen thinks his girlfriend Tiffany is cheating on him - he listens in on her phone calls and follows her to find her indeed meeting another guy for a romantic liaison. At the time I was thinking to myself that Tiffany is only one of three girls I have been involved with - not to mention the “massage parlours” you can visit to boost your face rating, it all seemed a bit hypocritical to me. Right enough, when Shen confronts Tiffany her immediate defence is: “you’ve been cheating on me”! It’s totally non essential (after this mission Tiffany is no longer seen in the main sequence) but I just liked the wee addition to the overall building of Shen’s world, the reminder that our protagonist is a flawed one.</p>
+
+<p>The whole cop vs gangster duality is an interesting one, and I think adds to the main story narrative. I don’t really see Shen as <em>torn</em> between his two very opposing sets of responsibilities but it does lead to a nice mixture of demands for his time / attention. The player is required to suspend their disbelief quite regularly as Shen goes without pausing for breath from carjacking to SWAT operations. Seriously, <em>nobody</em> on the Triad side notices him blazing around town in a police SUV taking out illegal street racers?!</p>
+
+<p>I do think it adds to the overall story but not so much the routine game play. At <em>no point</em> did I think to myself “Oh, I better not smash up the city too much as I chase that rival gangster cos it will have a negative impact on my cop rating.”.</p>
+
+<p>Open world games were not original even ten years back when Sleeping Dogs was first released and it’s inevitably going to get compared to the usual suspect - Grand Theft Auto. “GTA in Hong Kong” is a kind of TLDR description of Sleeping Dogs and it’s difficult to argue with that to any great extent. SD is much more focussed on hand to hand combat than GTA which is quite fitting as it is based in a city famous for kung fu cinema. Personally I prefer the focus on melee rather than gunplay. The cop angle is also different to GTA where all the protagonists are on the other side of the law.</p>
+
+<p>In conclusion I just need to say it again: I love this game! Sleeping Dogs to me absolutely nails the blend and balance needed for a strong open world experience. It doesn’t do everything perfectly and for me personally having the whole of Hong Kong speaking English really breaks the immersion but it does do a very good job of what it sets out to - an open world action adventure, heavily focussed on hand to hand combat in the bustling neon lit streets of Hong Kong. Don’t sleep on it!</p>
+
+<p>Plus:</p>
+
+<ul>
+  <li>Vibrant, perfectly sized open world</li>
+  <li>Strong, intuitive hand to hand combat system</li>
+  <li>Superb pacing, structure and blend of main missions with side content</li>
+</ul>
+
+<p>Minus:</p>
+
+<ul>
+  <li>Looking its age a bit now (especially on console)</li>
+  <li>Immersion breaking extensive English dialogue</li>
+</ul>
+
+<p>8.5/10</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Sleeping Dogs is one of my all time favourite video games]]></summary></entry><entry><title type="html">Home server project</title><link href="https://calumcraig.github.io//2025/12/02/Home_server_project.html" rel="alternate" type="text/html" title="Home server project" /><published>2025-12-02T00:00:00+00:00</published><updated>2025-12-02T00:00:00+00:00</updated><id>https://calumcraig.github.io//2025/12/02/Home_server_project</id><content type="html" xml:base="https://calumcraig.github.io//2025/12/02/Home_server_project.html"><![CDATA[<h3 id="planning-stage">Planning stage:</h3>
+
+<ul>
+  <li>Decide hardware to use:
+    <ul>
+      <li>I had a 4 GB RAM Raspberry Pi 5 which I bought with the intention to set up as a retro gaming console. I did so but wasn’t really using much - so I decided to repurpose it as something more practical.</li>
+    </ul>
+  </li>
+  <li>Needed storage space so ordered a 1TB SATA drive + mounting board.</li>
+  <li>Decide software to use:
+    <ul>
+      <li>Quick bit of research found an official Raspberry Pi image for Ubuntu Server - I’ve used Linux for years so that was perfect.
+        <ul>
+          <li>https://ubuntu.com/download/raspberry-pi</li>
+        </ul>
+      </li>
+      <li>Some more research suggested Docker as an ideal way to run a few services. (My primary use case was a media centre but if I was going to set up a server I decided I might as well extent its functionality beyond that.)</li>
+    </ul>
+  </li>
+  <li>Plan Docker containers:
+    <ul>
+      <li>Jellyfin - similar to Plex but fully open source.</li>
+      <li>Nextcloud - another open source application: a self hosted cloud drive.</li>
+      <li>Postgres - database for Nextcloud</li>
+      <li>qBittorrent - my intention was to download directly on the server to avoid copying lots of media from my PC.</li>
+      <li>Glances - monitoring service.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="initial-set-up">Initial set up:</h3>
+
+<ul>
+  <li>Installing Ubuntu Server on the Pi’s SD card was easy - used an application called Raspberry Pi imager.
+    <ul>
+      <li>Can enable SSH + user details during imaging.</li>
+      <li>Post install can either scan network from another machine using nmap to identify its IP or use the server briefly plugged into a monitor. ip addr</li>
+    </ul>
+  </li>
+  <li>To set a static IP I edited:</li>
+</ul>
+
+<p>$ cat /etc/netplan/50-cloud-init.yaml</p>
+
+<pre><code class="language-$">network:
+  version: 2
+  ethernets:
+    eth0:
+      dhcp4: no
+      addresses:
+        - 192.168.0.172/24
+      gateway4: 192.168.0.1
+      nameservers:
+        addresses: [1.1.1.1, 8.8.8.8]
+</code></pre>
+
+<p>So the IP is 192.168.0.172</p>
+
+<ul>
+  <li>Install Docker:</li>
+</ul>
+
+<pre><code class="language-#">sudo apt get update
+sudo apt get install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+# Add the repository to Apt sources:
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release &amp;&amp; echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null
+sudo apt get update
+</code></pre>
+
+<p>sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin</p>
+
+<ul>
+  <li>Set up directories for the various services:</li>
+</ul>
+
+<pre><code class="language-$">$ ls -la /mnt/storage/
+total 48
+drwxr-xr-x 9 calum    gpio      4096 Sep 16 15:37 .
+drwxr-xr-x 4 root     root      4096 Sep 18 15:23 ..
+drwxr-xr-x 3 calum    gpio      4096 Sep  4 18:57 glances
+drwxr-xr-x 4 calum    gpio      4096 Sep  4 18:55 jellyfin
+drwxr-xr-x 2 calum    gpio     16384 Sep  4 18:36 lost+found
+drwxr-xr-x 3 root     root      4096 Sep 14 21:29 media
+drwxr-x--- 4 www-data www-data  4096 Sep  4 18:56 nextcloud
+drwxr-xr-x 3 calum    gpio      4096 Sep  4 18:56 postgres
+drwxr-xr-x 7 calum    calum     4096 Sep 14 22:51 qbittorrent
+</code></pre>
+
+<ul>
+  <li>Create Docker compose file. I did get help from ChatGPT to do this! Mnt points defined in this file are important.</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat docker-compose.yml 
+services:
+  jellyfin:
+    image: jellyfin/jellyfin:latest
+    init: true
+    container_name: jellyfin
+    user: "1000:1000"
+    environment:
+      - TZ=Europe/London
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - /mnt/storage/jellyfin/config:/config
+      - /mnt/storage/jellyfin/media:/media
+    ports:
+      - "8096:8096"
+    restart: unless-stopped
+
+  nextcloud:
+    image: nextcloud:latest
+    init: true
+    container_name: nextcloud
+    environment:
+      - POSTGRES_DB=nextcloud
+      - POSTGRES_USER=nextcloud
+      - POSTGRES_PASSWORD=nextcloud
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - TZ=Europe/London
+    depends_on:
+      - postgres
+    volumes:
+      - /mnt/storage/nextcloud/config:/var/www/html/config
+      - /mnt/storage/nextcloud/data:/var/www/html/data
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:14
+    init: true
+    container_name: postgres
+    environment:
+      - POSTGRES_USER=nextcloud
+      - POSTGRES_PASSWORD=nextcloud
+      - POSTGRES_DB=nextcloud
+      - TZ=Europe/London
+    volumes:
+      - /mnt/storage/postgres/data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  qbittorrent:
+    image: linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    environment:
+      - PUID=1000
+      - PGID=1003
+      - TZ=Europe/London
+      - WEBUI_PORT=8080          # Container port (mapped to host 8081)
+      - WEBUI_LISTENING_IP=0.0.0.0  # Listen on all IPv4 interfaces
+    volumes:
+      - /mnt/storage/qbittorrent/config:/config
+      - /mnt/storage/media/qbittorrent/completed:/downloads   # Completed downloads
+      - /mnt/storage/qbittorrent/incomplete:/downloads/incomplete # Incomplete downloads
+    ports:
+      - "6881:6881"
+      - "6881:6881/udp"
+      - "8081:8080"             # Host port : Container port
+    restart: unless-stopped
+
+  glances:
+    image: nicolargo/glances:latest-full
+    container_name: glances
+    network_mode: host
+    pid: "host"
+    environment:
+      - GLANCES_OPT=-w
+      - GLANCES_EXPORT=influxdb
+      - GLANCES_INFLUXDB_HOST=192.168.0.120
+      - GLANCES_INFLUXDB_PORT=8086
+      - GLANCES_INFLUXDB_DB=glances
+      - GLANCES_INFLUXDB_USER=admin
+      - GLANCES_INFLUXDB_PASSWORD=admin
+    volumes:
+      - /mnt/storage/glances/config:/glances
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: unless-stopped
+    tty: true
+    stdin_open: true
+</code></pre></div></div>
+
+<ul>
+  <li>Spin up the server!</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">docker compose up -d</code></p>
+
+<ul>
+  <li>Add SSH keys from PC to server for password less connection.</li>
+</ul>
+
+<h3 id="further-set-up">Further set up:</h3>
+
+<ul>
+  <li>Get content into Jellyfin libraries.
+    <ul>
+      <li>Had media on my PC - SCPed files across into the appropriate directories.</li>
+      <li>Longer term strategy is to use the qBittorrent service to download directly to the Pi. Maaaybe, see later.</li>
+    </ul>
+  </li>
+  <li>Access the webUIs for the various services to eg set up users, configuration.</li>
+</ul>
+
+<h3 id="issues-faced">Issues faced:</h3>
+
+<ul>
+  <li>No user could log into Jellyfin!!
+    <ul>
+      <li>Troubleshot this and it turned out to a plugin I’d added. Decided I didn’t need it after all so resolved the issue by removing said plugin.</li>
+    </ul>
+  </li>
+  <li>Encountered intermittent access issues with Jellyfin (UI loaded but server connection refused). Mostly related to permissions of the directories being accessed.</li>
+  <li>SD card corruption. Twice my card failed on me and I had to reflash it and rebuild the sever. Using Docker made this fairly painless though.</li>
+  <li>Transcoding. Some video file formats / codecs require transcoding when playing in Jellyfin. I was aware of this but hadn’t really planned for it. I first noticed when I tried to watch a certain film and saw my CPU use rocket to basically 100%. The video buffered a lot too and was pretty much unwatchable.
+    <ul>
+      <li>This created a problem for my intended workflow of downloading content directly to the Piserver: file converting is too heavy a task to run on the Pi.</li>
+      <li>Plan was to scan new videos to check whether they are likely to need transcoding.
+        <ul>
+          <li>The script I had to do this proved totally inaccurate and can’t be relied upon.</li>
+        </ul>
+      </li>
+      <li>Settled on a mostly manual workflow, automating moving files between PC and server in a couple of places. Confirming transcode / direct play status of content currently needs to be done manually.</li>
+      <li>I still have a qBittorrent container in my stack but will most likely remove this if I can’t find a better workflow than above.</li>
+    </ul>
+  </li>
+  <li>Office applications in Nextcloud. “Out of the box”, Nextcloud is more like Dropbox than Google Drive but there are a wide range of apps available to add to it. I tried adding one called OnlyOffice but it was a bit of a resource hog - it needs its own Docker container which easily can consume half a GB of RAM whilst idle! As noted I only have 4GB on my Pi so I decided against running this for now.
+    <ul>
+      <li>I may reconsider this after deciding against running qBittorrent on the server, although its container was much less resource demanding than OO.</li>
+      <li>I did discover though that Nextcloud does offer editing of Markdown documents as default - like Dropbox Paper which I was a big fan of in a previous workplace.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="future-considerations">Future considerations:</h3>
+
+<ul>
+  <li>Backup strategy:
+    <ul>
+      <li>Haven’t fully planned this but intention is to build a second server (also running Ubuntu Server + Docker) to back up important data from the main server. (No intention to backup media, the storage space required would be too much.)</li>
+    </ul>
+  </li>
+  <li>Install a reverse proxy service to expose the server to the internet on a custom domain.
+    <ul>
+      <li>Need to approach this with a lot of caution as I am not very knowledgeable in network security and obviously there are risks. According to ChatGPT a good solution is to use Cloudflare.</li>
+    </ul>
+  </li>
+  <li>Monitoring - I Currently have a Glances dashboard which gives a good overview but may look into a more fully featured monitoring + logging service like Grafana.
+    <ul>
+      <li>Use an old phone as an always on monitoring screen.</li>
+    </ul>
+  </li>
+  <li>More storage - 1TB will not last very long - I do have a spare 500GB SSD which I have fitted to help but will need eg an external 4TB HDD sometime. (HDDs are perfectly fine for serving video content.)</li>
+  <li>Get this knowledge into a GitHub repo so to rebuild the server can just clone and spin up:
+    <ul>
+      <li>Directory structure</li>
+      <li>Permissions</li>
+      <li>Netplan config</li>
+      <li>Docker compose file</li>
+    </ul>
+  </li>
+  <li>Fan control - through Glances I can see that the fan is frequently running over 3000rpm. This is rather high when the CPU temp is around 50 C when idle. Need to look into this and set a better fan curve.</li>
+</ul>]]></content><author><name></name></author><summary type="html"><![CDATA[Planning stage:]]></summary></entry><entry><title type="html">QA - it’s more than just bug hunting and button pushing</title><link href="https://calumcraig.github.io//2025/12/02/QA_More_than_just_bug_hunting.html" rel="alternate" type="text/html" title="QA - it’s more than just bug hunting and button pushing" /><published>2025-12-02T00:00:00+00:00</published><updated>2025-12-02T00:00:00+00:00</updated><id>https://calumcraig.github.io//2025/12/02/QA_More_than_just_bug_hunting</id><content type="html" xml:base="https://calumcraig.github.io//2025/12/02/QA_More_than_just_bug_hunting.html"><![CDATA[<h3 id="lets-talk-qa">Let’s talk QA</h3>
+
+<p>When the term QA or test is mentioned in the context of developing software a common perception is of the tester just squirrelling away at an application, raising bugs as they encounter them. While, yes, this is part of our jobs, it is only part of the story. Good software testing requires a lot more than bug hunting.</p>
+
+<h3 id="the-misconception">The misconception:</h3>
+
+<p>This probably largely stems from the interactions of the QA members with the wider development team. When I ping a developer to chat about something, the “something” is more often than not an issue with their code.</p>
+
+<p>The other preconception is the “button pusher”, just robotically following acceptance criteria and testing by rote. Again, this goes with the territory of testing but again, it does not tell the whole story.</p>
+
+<h3 id="the-real-life-situation">The real life situation</h3>
+
+<p>My first proper job was working for a large UK bank on their business banking on-boarding process - essentially a suite of related web apps, including the customer facing website. This was a few years ago and the bank still very much operated a traditional waterfall development model. We had large releases a few times a year, each containing a lot of functionality.</p>
+
+<p>It was the test team’s responsibility to thoroughly test all the new functions and ensure it all matched what was specified in the Business Requirements Document. While the business analysts were based in the same building, the developers were offshore in India and we had zero interaction with them. Whenever we hit issues we would routinely raise defects in Quality Centre and patiently wait for a fix to come back from the dev team.</p>
+
+<p>After a few years there I moved onto a new company working on a public facing, large volume governmental website. This organisation operated a scrum agile methodology and released far more frequently. As the new functions would reach test more quickly and the changes were far more atomic, detailed in individual Jira tickets rather than one massive requirements document, I found myself raising fewer defects.</p>
+
+<p>As a still relatively new test analyst this bothered me and I shared my feelings with my scrum master. She was delighted!</p>
+
+<p>This threw me off!</p>
+
+<p>We had a long discussion about the responsibilities and input of QA in the development process and she was absolutely correct. Instead of chucking large chunks of broken software at QA and then triaging and fixing a long list of defects, test was getting involved earlier in the process and <em>preventing</em> bugs arising in the first place.</p>
+
+<h3 id="the-wider-impact-of-qa">The wider impact of QA</h3>
+
+<p>Testing tickets and raising bugs is our bread and butter but QA has a much wider impact than that.</p>
+
+<ul>
+  <li>Usability and user journey implications:
+    <ul>
+      <li>Whenever we work with an application or web page etc, we put ourselves in the place of a user. Ultimately our software products will be in the hands of punters - we need to think like them as far as possible. If a journey isn’t broken or a feature is functional, they still might not the best experience for our users. QA feedback can inform improvement of these experiences.</li>
+    </ul>
+  </li>
+  <li>Finding issues early before they become bugs.
+    <ul>
+      <li>The 3 Amigos meeting is a very powerful tool for this purpose. Getting the three disciplines (business, dev, test) early on in the development process can be really valuable. We ascertain the requirements are clear and that we share a common understanding of what we are building - or we clarify any ambiguity.</li>
+      <li>An example of this would be years ago when I joined a 3 Amigos to discuss a new API endpoint we were going to develop. I noticed some inconsistencies in the schema being used which could well have led to defects after the code had been written. We were able to address this before development had properly begun.</li>
+    </ul>
+  </li>
+  <li>Accessibility issues:
+    <ul>
+      <li>Screen reader and other accessibility tools are important to allow access to our software by users with impairments. It is easily overlooked but as testers we can again remind and illustrate to the business its importance. As non genuine users it can be challenging to put ourselves in the place of e.g. a user with little vision but it is an important part of testing not routinely covered in functional tickets themselves.</li>
+    </ul>
+  </li>
+  <li>Security focus:
+    <ul>
+      <li>Penetration testing is of course an entire (specialised) discipline in its own right but we can 100% test with a secure mindset. Weak validation, vague error messages, poor session handling are all security related aspects we can be vigilant for.</li>
+    </ul>
+  </li>
+  <li>Process improvement:
+    <ul>
+      <li>Typically QA will have a large input on the lifecycle of defects. Of the bigger, overall software development lifecycle perhaps not so much but we still have some influence. CI pipelines can be improved by increasing test automation coverage, fixing or removing flaky tests. Even the release process (which varies wildly by organisation) can often be tweaked for the better.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="quality-ownership-across-the-lifecycle">Quality ownership across the lifecycle</h3>
+
+<ul>
+  <li>Requirements analysis:
+    <ul>
+      <li>We frequently work closely with business analysts to ensure requirements for new features are accurate, meaningful and comprehensive. The acceptance criteria are our starting point when we come to design test cases after all.</li>
+    </ul>
+  </li>
+  <li>Test planning and strategy:
+    <ul>
+      <li>This can vary depending on the nature of the organisation but a couple of examples of this are my current company - again a bank. As an audited organisation we need a paper trail of controls and test plans are an important part of that. In a previous company, QA and the major stakeholders worked together to establish an agreed upon defect life cycle.</li>
+    </ul>
+  </li>
+  <li>Automation and CI/CD integration:
+    <ul>
+      <li>Automation has been a buzz word for years and companies frequently view it is a sliver bullet to cure all their quality woes. I don’t subscribe to this notion but that’s probably a topic for another blog post. Nevertheless, test automation is an important role. As we don’t usually have the same level of coding expertise as actual developers, this is usually another responsibility shouldered by both dev and test.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="the-bigger-picture-of-quality">The Bigger Picture of Quality</h2>
+
+<p>To go back to my previous experience of moving from waterfall to agile: I initially found the relative lower volume of defects I and other testers were raising a little concerning. But, it formed a turning point when I started to grasp the wider context of quality assurance in the software development process. The term <em>shift left</em> is often used to describe this concept in action and it is a good way to think about it.</p>
+
+<p>The left hand side of a project board shows work yet to be done. Analysts will need to write the initial tickets to get them on the board but QA can absolutely interrogate work before it any code has been written for inconsistencies, ambiguity, indeed even outright errors and we will naturally see fewer defects encountered.</p>
+
+<p>This early involvement of the QA team <em>bakes in</em> quality from the very start and along with all the other influences QA has on the development cycle, it is clear that QA has a very important role in building high quality software. And running test execution and raising bugs!</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Let’s talk QA]]></summary></entry></feed>

@@ -1,0 +1,11 @@
+comments:
+  allowedFields: ["name", "email", "message"]
+  branch: "master"
+  commitMessage: "Add comment from {fields.name}"
+  path: "_data/comments/{options.slug}"
+  filename: "comment-{timestamp}"
+  format: "yaml"
+  moderation: true
+  requiredFields: ["name", "message"]
+  transforms:
+    email: md5

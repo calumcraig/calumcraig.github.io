@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Home server project | Calum Craig’s blog</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="Home server project" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Planning stage:" />
+<meta property="og:description" content="Planning stage:" />
+<link rel="canonical" href="https://calumcraig.github.io//2025/12/02/Home_server_project.html" />
+<meta property="og:url" content="https://calumcraig.github.io//2025/12/02/Home_server_project.html" />
+<meta property="og:site_name" content="Calum Craig’s blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-12-02T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Home server project" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-12-02T00:00:00+00:00","datePublished":"2025-12-02T00:00:00+00:00","description":"Planning stage:","headline":"Home server project","mainEntityOfPage":{"@type":"WebPage","@id":"https://calumcraig.github.io//2025/12/02/Home_server_project.html"},"url":"https://calumcraig.github.io//2025/12/02/Home_server_project.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://calumcraig.github.io//feed.xml" title="Calum Craig&apos;s blog" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Calum Craig&#39;s blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Home server project</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2025-12-02T00:00:00+00:00" itemprop="datePublished">Dec 2, 2025
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h3 id="planning-stage">Planning stage:</h3>
+
+<ul>
+  <li>Decide hardware to use:
+    <ul>
+      <li>I had a 4 GB RAM Raspberry Pi 5 which I bought with the intention to set up as a retro gaming console. I did so but wasn’t really using much - so I decided to repurpose it as something more practical.</li>
+    </ul>
+  </li>
+  <li>Needed storage space so ordered a 1TB SATA drive + mounting board.</li>
+  <li>Decide software to use:
+    <ul>
+      <li>Quick bit of research found an official Raspberry Pi image for Ubuntu Server - I’ve used Linux for years so that was perfect.
+        <ul>
+          <li>https://ubuntu.com/download/raspberry-pi</li>
+        </ul>
+      </li>
+      <li>Some more research suggested Docker as an ideal way to run a few services. (My primary use case was a media centre but if I was going to set up a server I decided I might as well extent its functionality beyond that.)</li>
+    </ul>
+  </li>
+  <li>Plan Docker containers:
+    <ul>
+      <li>Jellyfin - similar to Plex but fully open source.</li>
+      <li>Nextcloud - another open source application: a self hosted cloud drive.</li>
+      <li>Postgres - database for Nextcloud</li>
+      <li>qBittorrent - my intention was to download directly on the server to avoid copying lots of media from my PC.</li>
+      <li>Glances - monitoring service.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="initial-set-up">Initial set up:</h3>
+
+<ul>
+  <li>Installing Ubuntu Server on the Pi’s SD card was easy - used an application called Raspberry Pi imager.
+    <ul>
+      <li>Can enable SSH + user details during imaging.</li>
+      <li>Post install can either scan network from another machine using nmap to identify its IP or use the server briefly plugged into a monitor. ip addr</li>
+    </ul>
+  </li>
+  <li>To set a static IP I edited:</li>
+</ul>
+
+<p>$ cat /etc/netplan/50-cloud-init.yaml</p>
+
+<pre><code class="language-$">network:
+  version: 2
+  ethernets:
+    eth0:
+      dhcp4: no
+      addresses:
+        - 192.168.0.172/24
+      gateway4: 192.168.0.1
+      nameservers:
+        addresses: [1.1.1.1, 8.8.8.8]
+</code></pre>
+
+<p>So the IP is 192.168.0.172</p>
+
+<ul>
+  <li>Install Docker:</li>
+</ul>
+
+<pre><code class="language-#">sudo apt get update
+sudo apt get install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+# Add the repository to Apt sources:
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release &amp;&amp; echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null
+sudo apt get update
+</code></pre>
+
+<p>sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin</p>
+
+<ul>
+  <li>Set up directories for the various services:</li>
+</ul>
+
+<pre><code class="language-$">$ ls -la /mnt/storage/
+total 48
+drwxr-xr-x 9 calum    gpio      4096 Sep 16 15:37 .
+drwxr-xr-x 4 root     root      4096 Sep 18 15:23 ..
+drwxr-xr-x 3 calum    gpio      4096 Sep  4 18:57 glances
+drwxr-xr-x 4 calum    gpio      4096 Sep  4 18:55 jellyfin
+drwxr-xr-x 2 calum    gpio     16384 Sep  4 18:36 lost+found
+drwxr-xr-x 3 root     root      4096 Sep 14 21:29 media
+drwxr-x--- 4 www-data www-data  4096 Sep  4 18:56 nextcloud
+drwxr-xr-x 3 calum    gpio      4096 Sep  4 18:56 postgres
+drwxr-xr-x 7 calum    calum     4096 Sep 14 22:51 qbittorrent
+</code></pre>
+
+<ul>
+  <li>Create Docker compose file. I did get help from ChatGPT to do this! Mnt points defined in this file are important.</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat docker-compose.yml 
+services:
+  jellyfin:
+    image: jellyfin/jellyfin:latest
+    init: true
+    container_name: jellyfin
+    user: "1000:1000"
+    environment:
+      - TZ=Europe/London
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - /mnt/storage/jellyfin/config:/config
+      - /mnt/storage/jellyfin/media:/media
+    ports:
+      - "8096:8096"
+    restart: unless-stopped
+
+  nextcloud:
+    image: nextcloud:latest
+    init: true
+    container_name: nextcloud
+    environment:
+      - POSTGRES_DB=nextcloud
+      - POSTGRES_USER=nextcloud
+      - POSTGRES_PASSWORD=nextcloud
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - TZ=Europe/London
+    depends_on:
+      - postgres
+    volumes:
+      - /mnt/storage/nextcloud/config:/var/www/html/config
+      - /mnt/storage/nextcloud/data:/var/www/html/data
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:14
+    init: true
+    container_name: postgres
+    environment:
+      - POSTGRES_USER=nextcloud
+      - POSTGRES_PASSWORD=nextcloud
+      - POSTGRES_DB=nextcloud
+      - TZ=Europe/London
+    volumes:
+      - /mnt/storage/postgres/data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  qbittorrent:
+    image: linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    environment:
+      - PUID=1000
+      - PGID=1003
+      - TZ=Europe/London
+      - WEBUI_PORT=8080          # Container port (mapped to host 8081)
+      - WEBUI_LISTENING_IP=0.0.0.0  # Listen on all IPv4 interfaces
+    volumes:
+      - /mnt/storage/qbittorrent/config:/config
+      - /mnt/storage/media/qbittorrent/completed:/downloads   # Completed downloads
+      - /mnt/storage/qbittorrent/incomplete:/downloads/incomplete # Incomplete downloads
+    ports:
+      - "6881:6881"
+      - "6881:6881/udp"
+      - "8081:8080"             # Host port : Container port
+    restart: unless-stopped
+
+  glances:
+    image: nicolargo/glances:latest-full
+    container_name: glances
+    network_mode: host
+    pid: "host"
+    environment:
+      - GLANCES_OPT=-w
+      - GLANCES_EXPORT=influxdb
+      - GLANCES_INFLUXDB_HOST=192.168.0.120
+      - GLANCES_INFLUXDB_PORT=8086
+      - GLANCES_INFLUXDB_DB=glances
+      - GLANCES_INFLUXDB_USER=admin
+      - GLANCES_INFLUXDB_PASSWORD=admin
+    volumes:
+      - /mnt/storage/glances/config:/glances
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: unless-stopped
+    tty: true
+    stdin_open: true
+</code></pre></div></div>
+
+<ul>
+  <li>Spin up the server!</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">docker compose up -d</code></p>
+
+<ul>
+  <li>Add SSH keys from PC to server for password less connection.</li>
+</ul>
+
+<h3 id="further-set-up">Further set up:</h3>
+
+<ul>
+  <li>Get content into Jellyfin libraries.
+    <ul>
+      <li>Had media on my PC - SCPed files across into the appropriate directories.</li>
+      <li>Longer term strategy is to use the qBittorrent service to download directly to the Pi. Maaaybe, see later.</li>
+    </ul>
+  </li>
+  <li>Access the webUIs for the various services to eg set up users, configuration.</li>
+</ul>
+
+<h3 id="issues-faced">Issues faced:</h3>
+
+<ul>
+  <li>No user could log into Jellyfin!!
+    <ul>
+      <li>Troubleshot this and it turned out to a plugin I’d added. Decided I didn’t need it after all so resolved the issue by removing said plugin.</li>
+    </ul>
+  </li>
+  <li>Encountered intermittent access issues with Jellyfin (UI loaded but server connection refused). Mostly related to permissions of the directories being accessed.</li>
+  <li>SD card corruption. Twice my card failed on me and I had to reflash it and rebuild the sever. Using Docker made this fairly painless though.</li>
+  <li>Transcoding. Some video file formats / codecs require transcoding when playing in Jellyfin. I was aware of this but hadn’t really planned for it. I first noticed when I tried to watch a certain film and saw my CPU use rocket to basically 100%. The video buffered a lot too and was pretty much unwatchable.
+    <ul>
+      <li>This created a problem for my intended workflow of downloading content directly to the Piserver: file converting is too heavy a task to run on the Pi.</li>
+      <li>Plan was to scan new videos to check whether they are likely to need transcoding.
+        <ul>
+          <li>The script I had to do this proved totally inaccurate and can’t be relied upon.</li>
+        </ul>
+      </li>
+      <li>Settled on a mostly manual workflow, automating moving files between PC and server in a couple of places. Confirming transcode / direct play status of content currently needs to be done manually.</li>
+      <li>I still have a qBittorrent container in my stack but will most likely remove this if I can’t find a better workflow than above.</li>
+    </ul>
+  </li>
+  <li>Office applications in Nextcloud. “Out of the box”, Nextcloud is more like Dropbox than Google Drive but there are a wide range of apps available to add to it. I tried adding one called OnlyOffice but it was a bit of a resource hog - it needs its own Docker container which easily can consume half a GB of RAM whilst idle! As noted I only have 4GB on my Pi so I decided against running this for now.
+    <ul>
+      <li>I may reconsider this after deciding against running qBittorrent on the server, although its container was much less resource demanding than OO.</li>
+      <li>I did discover though that Nextcloud does offer editing of Markdown documents as default - like Dropbox Paper which I was a big fan of in a previous workplace.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="future-considerations">Future considerations:</h3>
+
+<ul>
+  <li>Backup strategy:
+    <ul>
+      <li>Haven’t fully planned this but intention is to build a second server (also running Ubuntu Server + Docker) to back up important data from the main server. (No intention to backup media, the storage space required would be too much.)</li>
+    </ul>
+  </li>
+  <li>Install a reverse proxy service to expose the server to the internet on a custom domain.
+    <ul>
+      <li>Need to approach this with a lot of caution as I am not very knowledgeable in network security and obviously there are risks. According to ChatGPT a good solution is to use Cloudflare.</li>
+    </ul>
+  </li>
+  <li>Monitoring - I Currently have a Glances dashboard which gives a good overview but may look into a more fully featured monitoring + logging service like Grafana.
+    <ul>
+      <li>Use an old phone as an always on monitoring screen.</li>
+    </ul>
+  </li>
+  <li>More storage - 1TB will not last very long - I do have a spare 500GB SSD which I have fitted to help but will need eg an external 4TB HDD sometime. (HDDs are perfectly fine for serving video content.)</li>
+  <li>Get this knowledge into a GitHub repo so to rebuild the server can just clone and spin up:
+    <ul>
+      <li>Directory structure</li>
+      <li>Permissions</li>
+      <li>Netplan config</li>
+      <li>Docker compose file</li>
+    </ul>
+  </li>
+  <li>Fan control - through Glances I can see that the fan is frequently running over 3000rpm. This is rather high when the CPU temp is around 50 C when idle. Need to look into this and set a better fan curve.</li>
+</ul>
+
+
+<div class="share-section" style="margin-top:20px; display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+  <span style="font-weight:bold; font-size:0.95rem;">Share this post:</span>
+  <!-- Twitter/X -->
+  <a href="https://twitter.com/intent/tweet?text=Home%20server%20project&url=https://calumcraig.github.io//2025/12/02/Home_server_project.html" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; background-color:#1DA1F2; border-radius:50%; text-decoration:none;">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/twitter.svg" alt="Twitter" style="width:20px; height:20px; filter: invert(1);">
+  </a>
+
+  <!-- LinkedIn -->
+  <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://calumcraig.github.io//2025/12/02/Home_server_project.html" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; background-color:#0077B5; border-radius:50%; text-decoration:none;">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn" style="width:20px; height:20px; filter: invert(1);">
+  </a>
+
+  <!-- Reddit -->
+  <a href="https://www.reddit.com/submit?url=https://calumcraig.github.io//2025/12/02/Home_server_project.html&title=Home%20server%20project" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; background-color:#FF4500; border-radius:50%; text-decoration:none;">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/reddit.svg" alt="Reddit" style="width:20px; height:20px; filter: invert(1);">
+  </a>
+</div>
+
+  </div><a class="u-url" href="/2025/12/02/Home_server_project.html" hidden></a>
+
+<!-- Comments will be inserted here -->
+
+<div id="comment-status"></div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Calum Craig&#39;s blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Calum Craig&#39;s blog</li><li><a class="u-email" href="mailto:calumjcraig@protonmail.com">calumjcraig@protonmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/calumcraig"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">calumcraig</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Welcome to Calum&#39;s blog! Here I publish posts on a range of mainly tech topics. I work in the field of software test engineering so that is a big focus but not the only one.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Exploratory tesing in agile | Calum Craig’s blog</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="Exploratory tesing in agile" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Why exploratory testing is important in an agile framework" />
+<meta property="og:description" content="Why exploratory testing is important in an agile framework" />
+<link rel="canonical" href="https://calumcraig.github.io//2025/12/05/Exploratory_testing_in_agile.html" />
+<meta property="og:url" content="https://calumcraig.github.io//2025/12/05/Exploratory_testing_in_agile.html" />
+<meta property="og:site_name" content="Calum Craig’s blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-12-05T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Exploratory tesing in agile" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-12-05T00:00:00+00:00","datePublished":"2025-12-05T00:00:00+00:00","description":"Why exploratory testing is important in an agile framework","headline":"Exploratory tesing in agile","mainEntityOfPage":{"@type":"WebPage","@id":"https://calumcraig.github.io//2025/12/05/Exploratory_testing_in_agile.html"},"url":"https://calumcraig.github.io//2025/12/05/Exploratory_testing_in_agile.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://calumcraig.github.io//feed.xml" title="Calum Craig&apos;s blog" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Calum Craig&#39;s blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Exploratory tesing in agile</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2025-12-05T00:00:00+00:00" itemprop="datePublished">Dec 5, 2025
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h3 id="why-exploratory-testing-is-important-in-an-agile-framework">Why exploratory testing is important in an agile framework</h3>
+
+<p>When we deliver software using an agile methodology such as Scrum, we typically develop (and of course test) functionality in small, discrete packages.</p>
+
+<p>When a ticket is being worked upon QA will take the acceptance criteria as the starting point for designing our test cases which we then usually write scripts for in a test tool - either to be executed manually or automated. (As an aside I’ve recently been experimenting with using AI to help write test cases. I hate to admit it but I’ve been pleasantly surprised by the results. Give it a go if you haven’t yet.)</p>
+
+<p>We’ll then execute the test scripts and, assuming no defects are discovered, move the ticket on to the next stage of the board (generally PO acceptance but can vary depending on flavour of agile / organisation etc).</p>
+
+<p>That’s all well and good but it doesn’t quite feel satisfactory to me - which is where exploratory testing comes in.</p>
+
+<h3 id="what-is-exploratory-testing">What is exploratory testing?</h3>
+
+<p>Simply put, unscripted tests. While a well designed and written suite of test cases will cover the functionality being developed it generally isn’t the full story. It is usually very valuable to supplement this with exploratory testing. This is where QA goes “off piste” and tries to think outside of the box with the ways we interact with the system under test. We will explore unpredictable user behaviour, provoke extreme edge cases and generally try to break things.</p>
+
+<p>When I say exploratory testing is largely unscripted that’s not to say there are no techniques / strategies we can employ whilst engaged in this test approach:</p>
+
+<ul>
+  <li>Session based testing. We time box a session, set out some general goals (such as thoroughly test the login journey of a mobile banking app) and explore.</li>
+  <li>Mind mapping. Mind maps are effective tools for visualising journeys through a system. This is particularly useful for complex systems where e.g. there may be a number of interconnected APIs.</li>
+  <li>Risk based testing. One of the basic principles of testing is that comprehensive testing, where test <em>everything</em> is simply not possible. There is only a finite amount of time and effort available to us. As such we can choose to target areas of the system under test which pose the largest risk. This may be at our discretion or a business lead decision.</li>
+  <li>Pair or mob testing. Like pair or mob developing this is when we work with other testers in the spirit of “two heads are better than one” in terms of generating test ideas and having different perspectives on the matter at hand.</li>
+  <li>Subject matter expertise. When we work on a piece of software and grow to be knowledgeable about it, this is a boon to exploratory testing.  To go back to the example of the login journey, I may have previously tested this journey and from this experience I know that the password reset journey is potentially vulnerable to inadvertent defects and know to thoroughly test this area, even if the changes being tested lie somewhere slightly different.</li>
+  <li>A/ B testing. Comparing behaviours across environments / OSes / builds / versions can be extremely informative. In my current role I work on both mobile apps (Android and iOS). When testing a new feature I will often compare the two OSes. In addition, we have to support older versions of both OS so we can’t just test on the latest version.</li>
+</ul>
+
+<p>To give a real world example of a defect discovered by exploratory testing that scripted, formal testing wouldn’t have picked up on, we recently discovered an issue caused by race conditions in our mobile app. If a user repeatedly, quickly spammed a button in the app which triggered an API call, the sequence of calls could be corrupted and a 404 error was thrown. This 100% falls into the “extreme edge case” category but we knew from user reviews of the app that it had happened in production.</p>
+
+<h3 id="tools-to-support-exploratory-testing">Tools to support exploratory testing</h3>
+
+<p>For most testers exploratory testing will not be a major departure from their normal workflow so the tools they usually employ will most likely suffice. A few things to consider though might be:</p>
+
+<ul>
+  <li>A lightweight note taking app. I usually use a plain text editor or something that supports Markdown. On Linux I use Typora and on my work Mac I use the OS included TextEdit app. A nice simple note taking tool is absolutely fine, we don’t need to go down the formatting rabbit hole of a Word document.</li>
+  <li>Screen recording and screenshot tools. Again I use the built in Screenshot app in MacOS - or sometimes QuickTime which has the added benefit of integrating with Xcode.</li>
+  <li>Bug reporting: again this will most likely be the same tool you use in your normal testing. The key difference for me is that for defects found outwith formal testing I raise them directly in Jira, whereas when executing scripted tests I initially raise them in the test tool qTest which is itself integrated with Jira and a corresponding Jira ticket is created by the tool.</li>
+  <li>An inspector / recorder tool. What I mean here is we may discover flows while exploratory testing that we want to automate to return to later. Various tools exist that can do this - in my current role as a mobile app tester I have used Appium Inspector and Maestro Studio for this purpose.</li>
+</ul>
+
+<h3 id="benefits-of-exploratory-testing">Benefits of exploratory testing</h3>
+
+<ul>
+  <li>Early testing, quick feedback. We can test a new feature as soon as it is developed without needing to script and execute formal test cases. “Kick the tyres” of the system under test. Unscripted interaction with the product often exposes high-impact issues earlier than structured test cycles.</li>
+  <li>Better placed to uncover edge cases. Of course a well designed test suite will include edge cases and negative scenarios but further exploratory testing can really delve into this aspect of the system. This can tie into our knowledge and expertise of the system.</li>
+  <li>Enhanced collaboration and knowledge transfer. Working together on exploratory testing is the ideal opportunity for e.g. an experienced tester to share with a new starter: quirks of the system they are working on etc.</li>
+  <li>Increases productivity in downtime. When development of tickets take longer than anticipated it can result in a delay in work reaching Ready for Test. When this happens the QA team can engage in exploratory testing so that value is still added to the process even when e.g. waiting for build issues to be resolved.</li>
+</ul>
+
+<h3 id="its-not-either-or">It’s not either or</h3>
+
+<p>Exploratory testing absolutely shouldn’t replace scripted formal testing but it is the perfect complement to it. Well designed test case, when accurately executed <em>will</em> uncover defects but we know that it can and does miss some. That’s where exploratory testing comes in to support our testing process.</p>
+
+<p>Situations such as race conditions, extreme edge cases and cross OS discrepancies may well be covered by regular testing <em>to an extent</em> but exploratory testing affords us the opportunity to get stuck in even deeper.</p>
+
+<p>I’m sure your team does engage in exploratory testing to some extent but I would absolutely encourage you to ensure it features as a regular component of your testing approach in an agile methodology.</p>
+
+
+
+<div class="share-section" style="margin-top:20px; display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+  <span style="font-weight:bold; font-size:0.95rem;">Share this post:</span>
+  <!-- Twitter/X -->
+  <a href="https://twitter.com/intent/tweet?text=Exploratory%20tesing%20in%20agile&url=https://calumcraig.github.io//2025/12/05/Exploratory_testing_in_agile.html" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; background-color:#1DA1F2; border-radius:50%; text-decoration:none;">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/twitter.svg" alt="Twitter" style="width:20px; height:20px; filter: invert(1);">
+  </a>
+
+  <!-- LinkedIn -->
+  <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://calumcraig.github.io//2025/12/05/Exploratory_testing_in_agile.html" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; background-color:#0077B5; border-radius:50%; text-decoration:none;">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn" style="width:20px; height:20px; filter: invert(1);">
+  </a>
+
+  <!-- Reddit -->
+  <a href="https://www.reddit.com/submit?url=https://calumcraig.github.io//2025/12/05/Exploratory_testing_in_agile.html&title=Exploratory%20tesing%20in%20agile" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; background-color:#FF4500; border-radius:50%; text-decoration:none;">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/reddit.svg" alt="Reddit" style="width:20px; height:20px; filter: invert(1);">
+  </a>
+</div>
+
+  </div><a class="u-url" href="/2025/12/05/Exploratory_testing_in_agile.html" hidden></a>
+
+<!-- Comments will be inserted here -->
+
+<div id="comment-status"></div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Calum Craig&#39;s blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Calum Craig&#39;s blog</li><li><a class="u-email" href="mailto:calumjcraig@protonmail.com">calumjcraig@protonmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/calumcraig"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">calumcraig</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Welcome to Calum&#39;s blog! Here I publish posts on a range of mainly tech topics. I work in the field of software test engineering so that is a big focus but not the only one.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
