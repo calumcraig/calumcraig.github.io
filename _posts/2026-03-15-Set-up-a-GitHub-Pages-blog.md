@@ -66,4 +66,4 @@ git push -u origin main
 - Add posts in \_posts folder: 
   - Format: YYYY-MM-DD-title.md
   - Use Markdown for formatting.
-    - This is ideal for me as I can edit documents directly in my Nextcloud instance then copy over to the blog project repo.
+This is ideal for me as I can edit documents directly in my Nextcloud instance then copy over to the blog project repo.
