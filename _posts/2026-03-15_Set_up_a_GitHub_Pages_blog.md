@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "How to Set Up a Blog on GitHub Pages Using Jekyll"
 date: 2026-03-15
 ---
