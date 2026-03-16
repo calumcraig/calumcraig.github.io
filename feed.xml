@@ -1,4 +1,87 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://calumcraig.github.io//feed.xml" rel="self" type="application/atom+xml" /><link href="https://calumcraig.github.io//" rel="alternate" type="text/html" /><updated>2026-03-16T23:28:22+00:00</updated><id>https://calumcraig.github.io//feed.xml</id><title type="html">Calum Craig’s blog</title><subtitle>Welcome to Calum&apos;s blog! Here I publish posts on a range of mainly tech topics. I work in the field of software test engineering so that is a big focus but not the only one.</subtitle><entry><title type="html">AI - what role does it have to play in QA?</title><link href="https://calumcraig.github.io//2026/01/07/AI_in_QA.html" rel="alternate" type="text/html" title="AI - what role does it have to play in QA?" /><published>2026-01-07T00:00:00+00:00</published><updated>2026-01-07T00:00:00+00:00</updated><id>https://calumcraig.github.io//2026/01/07/AI_in_QA</id><content type="html" xml:base="https://calumcraig.github.io//2026/01/07/AI_in_QA.html"><![CDATA[<p>Today I want to talk about the biggest current development out there - AI. We’ve all heard the “all your jobs will be lost to AI” scaremongering and maybe we should be a little concerned. But, from my point of view, that concern is better placed in not being left behind at being able to use this wonderful new set of tools we have rather then Skynet stealing your job.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://calumcraig.github.io//feed.xml" rel="self" type="application/atom+xml" /><link href="https://calumcraig.github.io//" rel="alternate" type="text/html" /><updated>2026-03-16T23:39:28+00:00</updated><id>https://calumcraig.github.io//feed.xml</id><title type="html">Calum Craig’s blog</title><subtitle>Welcome to Calum&apos;s blog! Here I publish posts on a range of mainly tech topics. I work in the field of software test engineering so that is a big focus but not the only one.</subtitle><entry><title type="html">How to Set Up a Blog on GitHub Pages Using Jekyll</title><link href="https://calumcraig.github.io//2026/03/15/Set-up-a-GitHub-Pages-blog.html" rel="alternate" type="text/html" title="How to Set Up a Blog on GitHub Pages Using Jekyll" /><published>2026-03-15T00:00:00+00:00</published><updated>2026-03-15T00:00:00+00:00</updated><id>https://calumcraig.github.io//2026/03/15/Set-up-a-GitHub-Pages-blog</id><content type="html" xml:base="https://calumcraig.github.io//2026/03/15/Set-up-a-GitHub-Pages-blog.html"><![CDATA[<h1 id="how-to-set-up-a-blog-on-github-pages-using-jekyll">How to Set Up a Blog on GitHub Pages Using Jekyll</h1>
+
+<p>It’s been a wee while since I published a post and this is just a quick one but I thought it might be quite interesting to share my experience getting this blog up and running. It’s kind of meta, a blog post about creating a blog but stick with me!</p>
+
+<h2 id="step-1-create-a-github-repository">Step 1: Create a GitHub Repository</h2>
+
+<ol>
+  <li>Log in to GitHub.</li>
+  <li>Create a new repository named:
+    <ul>
+      <li>username.github.io (replace username with your GitHub username).</li>
+    </ul>
+  </li>
+  <li>Set it to Public and initialise with a README.</li>
+</ol>
+
+<hr />
+
+<h2 id="step-2-enable-github-pages">Step 2: Enable GitHub Pages</h2>
+
+<ol>
+  <li>Go to Settings → Pages.</li>
+  <li>Under Source, select:
+    <ul>
+      <li>Branch: main</li>
+      <li>Folder: / (root)</li>
+    </ul>
+  </li>
+  <li>Save. Your site will be live at:
+    <ul>
+      <li>https://username.github.io</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<h2 id="step-3-choose-a-static-site-generator-jekyll">Step 3: Choose a Static Site Generator (Jekyll)</h2>
+
+<p>The easiest option is Jekyll (officially supported by GitHub Pages):</p>
+
+<h3 id="install-ruby-and-jekyll-locally">Install Ruby and Jekyll locally:</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>ruby-full build-essential zlib1g-dev
+gem <span class="nb">install </span>jekyll bundler
+</code></pre></div></div>
+
+<h3 id="create-a-new-jekyll-site">Create a new Jekyll site:</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jekyll new myblog
+<span class="nb">cd </span>myblog
+bundle <span class="nb">exec </span>jekyll serve
+</code></pre></div></div>
+
+<h3 id="push-the-site-to-your-github-repo">Push the site to your GitHub repo:</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git init
+git remote add origin https://github.com/username/username.github.io.git
+git add <span class="nb">.</span>
+git commit <span class="nt">-m</span> <span class="s2">"Initial blog setup"</span>
+git push <span class="nt">-u</span> origin main
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="step-4-create-content">Step 4: Create content:</h2>
+
+<ul>
+  <li>Edit _config.yml to set:
+    <ul>
+      <li>Title, description, theme.</li>
+    </ul>
+  </li>
+  <li>Add posts in _posts folder:
+    <ul>
+      <li>Format: YYYY-MM-DD-title.md</li>
+      <li>Use Markdown for formatting.
+        <ul>
+          <li>This is ideal for me as I can edit documents directly in my Nextcloud instance then copy over to the blog project repo.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>]]></content><author><name></name></author><summary type="html"><![CDATA[How to Set Up a Blog on GitHub Pages Using Jekyll]]></summary></entry><entry><title type="html">AI - what role does it have to play in QA?</title><link href="https://calumcraig.github.io//2026/01/07/AI_in_QA.html" rel="alternate" type="text/html" title="AI - what role does it have to play in QA?" /><published>2026-01-07T00:00:00+00:00</published><updated>2026-01-07T00:00:00+00:00</updated><id>https://calumcraig.github.io//2026/01/07/AI_in_QA</id><content type="html" xml:base="https://calumcraig.github.io//2026/01/07/AI_in_QA.html"><![CDATA[<p>Today I want to talk about the biggest current development out there - AI. We’ve all heard the “all your jobs will be lost to AI” scaremongering and maybe we should be a little concerned. But, from my point of view, that concern is better placed in not being left behind at being able to use this wonderful new set of tools we have rather then Skynet stealing your job.</p>
 
 <h3 id="where-can-we-leverage-this-emerging-technology">Where can we leverage this emerging technology?</h3>
 
