@@ -1,3 +1,8 @@
+---
+title: "How to Set Up a Blog on GitHub Pages Using Jekyll"
+date: 2026-03-15
+---
+
 # How to Set Up a Blog on GitHub Pages Using Jekyll
 
 It's been a wee while since I published a post and this is just a quick one but I thought it might be quite interesting to share my experience getting this blog up and running. It's kind of meta, a blog post about creating a blog but stick with me!
